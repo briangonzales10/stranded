@@ -1,5 +1,6 @@
 package com.game;
 
+import com.game.player.Player;
 import com.game.world.gameWorld;
 import com.game.world.location;
 import com.game.textparser.UserInput;
@@ -29,6 +30,10 @@ public class game {
         StartMenu game2 = new StartMenu();
 
         StartMenu.entCont();
+
+        //Clint's player test
+        Player player1 = new Player();
+
 
     }
 }
