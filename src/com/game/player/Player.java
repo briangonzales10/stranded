@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class Player {
     private String name;
-    private String currentLocation;
     private ArrayList<String> inventory;
+    private String currentLocation = "Crash Site";
 
     public Player(){
         setName();
