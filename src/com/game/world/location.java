@@ -13,8 +13,12 @@ public class location {
     private String south;
     private String west;
 
+    //Item Instance Fields
+    private String items;
+    private String hiddenItems;
+
     //Constructor for building location
-    public location(int Id,String name, String description, String north, String east, String south, String west) {
+    public location(int Id,String name, String description, String north, String east, String south, String west,String item, String hiddenItem) {
         setLocationId(Id);
         setName(name);
         setDescription(description);
@@ -22,6 +26,8 @@ public class location {
         setEast(east);
         setSouth(south);
         setWest(west);
+        setItems(item);
+        setHiddenItems(hiddenItem);
     }
 
     //Methods
@@ -103,6 +109,29 @@ public class location {
 
     private void setWest(String west) {
         this.west = west;
+    }
+
+    public String getItems() {
+        if (items == null || items == "") {
+            return "Nothing found";
+        }
+        return items;
+    }
+
+    public void setItems(String items) {
+        this.items = items;
+    }
+
+    public String getHiddenItems() {
+        if (hiddenItems == null || hiddenItems == "") {
+            return "Nothing found";
+        } else {
+            return hiddenItems;
+        }
+    }
+
+    public void setHiddenItems(String hiddenItems) {
+        this.hiddenItems = hiddenItems;
     }
 
     @Override
