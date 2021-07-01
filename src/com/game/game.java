@@ -3,6 +3,7 @@ package com.game;
 import com.game.world.gameWorld;
 import com.game.world.location;
 import com.game.textparser.UserInput;
+import com.game.startmenu.*;
 
 import java.util.HashMap;
 
@@ -23,6 +24,11 @@ public class game {
 
         String[] actionTest = UserInput.action();
         System.out.println("The action you entered is: " + actionTest[0] + " " + actionTest[1]);
+
+        // David Test
+        StartMenu game2 = new StartMenu();
+
+        StartMenu.entCont();
 
     }
 }
