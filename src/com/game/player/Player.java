@@ -5,8 +5,8 @@ import com.game.textparser.UserInput;
 import java.util.ArrayList;
 
 public class Player {
-    private String name;
-    private ArrayList<String> inventory = new ArrayList<>();
+    private static String name;
+    private static ArrayList<String> inventory = new ArrayList<>();
     //private String currentLocation = "Crash Site";
 
     public Player(){
@@ -15,7 +15,7 @@ public class Player {
     }
 
     //Name Getter and Setter
-    public String getName(){
+    public static String getName(){
         return name;
     }
 
@@ -38,11 +38,11 @@ public class Player {
 
 
     //Inventory method will go below
-    public void addItem(String item){
+    public static void addItem(String item){
         inventory.add(item);
     }
 
-    public StringBuilder viewInventory(){
+    public static StringBuilder viewInventory(){
         StringBuilder inventoryString = new StringBuilder();
 
         for(String item: inventory){
