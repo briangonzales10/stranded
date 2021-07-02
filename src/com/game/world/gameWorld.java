@@ -5,9 +5,11 @@ import java.util.Locale;
 
 
 public class gameWorld {
-    private String currentLocation = "Crash Site";
+    private static String currentLocation = "Crash Site";
+    private static String previousLocation = "Crash Site";
+
     //Field for each planet
-    private HashMap<String, location> planet1;
+    private static HashMap<String, location> planet1;
 
     public gameWorld() {
         planet1 = new HashMap<>();
@@ -22,15 +24,15 @@ public class gameWorld {
     }
 
     //Getters for planets
-    public HashMap<String, location> getPlanet1() {
+    public static HashMap<String, location> getPlanet1() {
         return planet1;
     }
 
-    public String getCurrentLocation() {
+    public static String getCurrentLocation() {
         return currentLocation;
     }
 
-    public String getNextLocation(String currentLocationArg, String direction) {
+    public static String getNextLocation(String currentLocationArg, String direction) {
         String nextLocation = "";
         switch (direction.toLowerCase()) {
             case "north":
@@ -48,8 +50,18 @@ public class gameWorld {
         return nextLocation;
     }
 
-    public void setCurrentLocation(String currentLocation) {
-        this.currentLocation = currentLocation;
+    public static void setCurrentLocation(String newLocation) {
+        setPreviousLocation(currentLocation);
+        currentLocation = newLocation;
+
+    }
+
+    public static String getPreviousLocation() {
+        return previousLocation;
+    }
+
+    private static void setPreviousLocation(String previousLocation) {
+        gameWorld.previousLocation = previousLocation;
     }
 
     @Override
