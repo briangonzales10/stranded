@@ -71,7 +71,7 @@ public class UserInput {
 
     public static String grabItem(String[] inputStringArrayArg){
         //Placeholder for future grabItem method
-
+        itemGrabbed = inputStringArrayArg[1];
         return itemGrabbed;
     }
 

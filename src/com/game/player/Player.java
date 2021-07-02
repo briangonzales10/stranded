@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class Player {
     private String name;
-    private ArrayList<String> inventory;
-    private String currentLocation = "Crash Site";
+    private ArrayList<String> inventory = new ArrayList<>();
+    //private String currentLocation = "Crash Site";
 
     public Player(){
         setName();
@@ -25,9 +25,11 @@ public class Player {
     }
 
     //Location
-    public String getCurrentLocation(){
+   /* public String getCurrentLocation(){
         return currentLocation;
     }
+
+    */
 
     public void setCurrentLocation(){
         //Need to add logic to set Location
@@ -36,6 +38,18 @@ public class Player {
 
 
     //Inventory method will go below
+    public void addItem(String item){
+        inventory.add(item);
+    }
+
+    public StringBuilder viewInventory(){
+        StringBuilder inventoryString = new StringBuilder();
+
+        for(String item: inventory){
+            inventoryString.append(item).append(" ");
+        }
+        return inventoryString;
+    }
 
 
 
