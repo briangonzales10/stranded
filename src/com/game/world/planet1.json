@@ -1,0 +1,91 @@
+﻿[
+{
+		"locationId": 1,
+		"name": "Crash Site",
+		"description": "You see your crashed ship with obvious signs of damage. You'll need to find tools to fix them. You take a look around and see paths to the North, East and South.",
+		"north": "Frozen Tundra",
+		"east": "Beach",
+		"south": "Mountains",
+		"west": null,
+		"items": "Nothing found",
+		"hiddenItems": "pistol"
+	},
+	{
+		"locationId": 2,
+		"name": "Frozen Tundra",
+		"description": "Temperatures quickly dropped and now you're in the middle of a frozen tundra wasteland.  You don't see much around you except a barely visible path to the west",
+		"north": null,
+		"east": null,
+		"south": "Crash Site",
+		"west": "Crater",
+		"items": "shovel",
+		"hiddenItems": "Nothing found"
+	},
+	{
+		"locationId": 3,
+		"name": "Crater",
+		"description": "You fall into a large, but shallow crater.  You notice some plastic crates with some Tools sticking out.  Maybe you can fix your ship with it.  You also see some vegetation starting to grow on one end of the crater",
+		"north": null,
+		"east": "Frozen Tundra",
+		"south": "Jungle",
+		"west": null,
+		"items": "tools",
+		"hiddenItems": "Nothing found"
+	},
+	{
+		"locationId": 4,
+		"name": "Jungle",
+		"description": "All you see is a densely packed jungle with lots of trees everywhere.  On a tree branch you spot a fruit that you can eat.  Hopefully it's not too poisonous ",
+		"north": "Crater",
+		"east": null,
+		"south": null,
+		"west": null,
+		"items": "fruit",
+		"hiddenItems": null
+	},
+	{
+		"locationId": 5,
+		"name": "Beach",
+		"description": "Looks like a very nice deserted beach.  You could picture yourself vacationing here if you hadn't crash landed and trying to fight to survive.  You do see a fish that washed up on shore though, maybe you can eat it. You also spot a small creek emptying out into the beach to the south.",
+		"north": null,
+		"east": null,
+		"south": "Creek",
+		"west": "Crash Site",
+		"items": "fish",
+		"hiddenItems": null
+	},
+	{
+		"locationId": 6,
+		"name": "Creek",
+		"description": "Just a small freshwater creek here going up the mountain to the west.  The mountain looks pretty inaccessible from here though.  Maybe you can go around it.",
+		"north": "Beach",
+		"east": null,
+		"south": null,
+		"west": null,
+		"items": "water",
+		"hiddenItems": null
+	},
+	 {
+		"locationId": 7,
+		"name": "Mountains",
+		"description": "Looks like a pretty tall mountain with a path to the top.  You can vaguely spot something like a radio antenna at the top.  What could that be?",
+		"north": "Crash Site",
+		"east": null,
+		"south": "Alien Compound",
+		"west": null,
+		"items": null,
+		"hiddenItems": null
+	},
+	{
+		"locationId": 8,
+		"name": "Alien Compound",
+		"description": "Oh no, the aliens spot you and start to attack!",
+		"north": "Mountains",
+		"east": null,
+		"south": null,
+		"west": null,
+		"items": null,
+		"hiddenItems": null
+	}
+
+]
