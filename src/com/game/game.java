@@ -1,20 +1,49 @@
 package com.game;
 
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.game.player.Player;
 import com.game.world.gameWorld;
 import com.game.world.location;
 import com.game.textparser.UserInput;
 import com.game.startmenu.*;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class game {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //testing for game world
+        // Testing .json to Java Location Objects...
+        byte[] locationData = Files.readAllBytes(Paths.get("src/com/game/world/planet1.json"));
+        ObjectMapper objectMapper = new ObjectMapper();
+        location[] location = objectMapper.readValue(locationData, location[].class);
+
+
+
+        HashMap<String, location> testPlanet = new HashMap<>();
+        System.out.println("******");
+        for (location loc: location ) {
+            testPlanet.put(loc.getName(), loc);
+        }
+        System.out.println(testPlanet);
+        System.out.println("******");
+
+
         gameWorld game = new gameWorld();
 
         HashMap<String, location> planet1 = game.getPlanet1();
 
+        //String planetJSON = new ObjectMapper().writeValueAsString(planet1);
+
+
+        //System.out.println(planetJSON);
+        System.out.println("\n");
+        System.out.println(planet1);
+
+        System.out.println("______________________________________________");
         System.out.println(planet1.get("Frozen Tundra").getDescription());
         System.out.println(planet1.get("Frozen Tundra").getDirections());
         System.out.println(planet1.get("Crater").getDirections());

@@ -1,5 +1,8 @@
 package com.game.world;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class location {
 // Instance Fields for locations on planet
     private int locationId;
@@ -17,6 +20,10 @@ public class location {
     private String items;
     private String hiddenItems;
 
+    //Default constructor for Jackson JSON objects
+    public location() {
+        super();
+    }
     //Constructor for building location
     public location(int Id,String name, String description, String north, String east, String south, String west,String item, String hiddenItem) {
         setLocationId(Id);
@@ -134,11 +141,20 @@ public class location {
         this.hiddenItems = hiddenItems;
     }
 
+
+
     @Override
     public String toString() {
-
-        return " " + name + " \n" +
-                description + "\n" +
-                "Paths available: " + north + east + south + west;
+        return "{" +
+                "locationId=" + locationId +
+                ", name='" + name + '\n' +
+                ", description='" + description + '\n' +
+                ", north='" + north + '\n' +
+                ", east='" + east + '\n' +
+                ", south='" + south + '\n' +
+                ", west='" + west + '\n' +
+                ", items='" + items + '\n' +
+                ", hiddenItems='" + hiddenItems + '\n' +
+                '}';
     }
 }

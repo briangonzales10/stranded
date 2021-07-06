@@ -1,7 +1,12 @@
 package com.game.world;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.Locale;
+
 
 
 public class gameWorld {
@@ -11,15 +16,17 @@ public class gameWorld {
     //Field for each planet
     private static HashMap<String, location> planet1;
 
-    public gameWorld() {
-        planet1 = new HashMap<>();
+    public gameWorld() throws IOException {
+        //Load our locations from planet1.json file into array of location objects
+        byte[] locationData = Files.readAllBytes(Paths.get("src/com/game/world/planet1.json"));
+        ObjectMapper objectMapper = new ObjectMapper();
+        location[] location = objectMapper.readValue(locationData, location[].class);
 
-        planet1.put("Crash Site", new location(1,"Crash Site", "You see your crashed ship with obvious signs of damage. You'll need to find tools to fix them. You take a look around and see paths to the North, East and South.",
-                "Frozen Tundra", "Beach", "Mountains", null,null, "pistol"));
-        planet1.put("Frozen Tundra", new location(2, "Frozen Tundra","Temperatures quickly dropped and now you're in the middle of a frozen tundra wasteland.  You don't see much around you except a barely visible path to the west",
-                null, null, "Crash Site", "Crater", "shovel",null));
-        planet1.put("Crater", new location(3, "Crater", "You fall into a large, but shallow crater.  You notice some plastic crates with some Tools sticking out.  Maybe you can fix your ship with it.  You also see some vegetation starting to grow on one end of the crater",
-                null, "Frozen Tundra", "Jungle", null, "tools",null));
+        //load our planet Hashmap with location objects
+        planet1 = new HashMap<>();
+        for (location loc: location ) {
+            planet1.put(loc.getName(), loc);
+        }
 
     }
 
