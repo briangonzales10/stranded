@@ -41,12 +41,12 @@ public class status {
 
             if (!command[1].equals(currentLocData.getItems())) {
                 System.out.println("Nothing there to grab!");
-                UserInput.action();
+                //UserInput.action();
+            } else {
+                Player.addItem(command[1]);
+                System.out.println(command[1] + " grabbed!");
+                gameWorld.getPlanet1().get(currentLoc).setItems(""); //removes item from loc inventory
             }
-            Player.addItem(command[1]);
-            System.out.println(command[1] + " grabbed!");
-            gameWorld.getPlanet1().get(currentLoc).setItems(""); //removes item from loc inventory
-
         }
 
         if (command[0].equals("search")) {
@@ -58,6 +58,10 @@ public class status {
             } else {
                 System.out.println("There's a hidden item but the " + currentLocData.getItems() +" is in the way");
             }
+        }
+
+        if (command[0].equals("drop")) {
+            //drop code here
         }
         //else throw new IllegalArgumentException("not valid commands");
 

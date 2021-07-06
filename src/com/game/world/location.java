@@ -113,7 +113,7 @@ public class location {
 
     public String getItems() {
         if (items == null || items == "") {
-            return "Nothing found";
+            return "";
         }
         return items;
     }
