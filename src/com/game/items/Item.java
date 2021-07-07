@@ -11,7 +11,7 @@ public class Item {
 
 
     //Default constructor for Jackson JSON objects
-    public Item() {
+    public Item () {
         super();
     }
 
