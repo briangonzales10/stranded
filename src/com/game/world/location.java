@@ -16,16 +16,12 @@ public class location {
     private String south;
     private String west;
 
-    //Item Instance Fields
-    private String items;
-    private String hiddenItems;
-
     //Default constructor for Jackson JSON objects
     public location() {
         super();
     }
     //Constructor for building location
-    public location(int Id,String name, String description, String north, String east, String south, String west,String item, String hiddenItem) {
+    public location(int Id,String name, String description, String north, String east, String south, String west) {
         setLocationId(Id);
         setName(name);
         setDescription(description);
@@ -33,8 +29,7 @@ public class location {
         setEast(east);
         setSouth(south);
         setWest(west);
-        setItems(item);
-        setHiddenItems(hiddenItem);
+
     }
 
     //Methods
@@ -118,29 +113,6 @@ public class location {
         this.west = west;
     }
 
-    public String getItems() {
-        if (items == null || items == "") {
-            return "";
-        }
-        return items;
-    }
-
-    public void setItems(String items) {
-        this.items = items;
-    }
-
-    public String getHiddenItems() {
-        if (hiddenItems == null || hiddenItems == "") {
-            return "Nothing found";
-        } else {
-            return hiddenItems;
-        }
-    }
-
-    public void setHiddenItems(String hiddenItems) {
-        this.hiddenItems = hiddenItems;
-    }
-
 
 
     @Override
@@ -153,8 +125,6 @@ public class location {
                 ", east='" + east + '\n' +
                 ", south='" + south + '\n' +
                 ", west='" + west + '\n' +
-                ", items='" + items + '\n' +
-                ", hiddenItems='" + hiddenItems + '\n' +
                 '}';
     }
 }
