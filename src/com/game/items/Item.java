@@ -1,5 +1,8 @@
 package com.game.items;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Item {
     private int Id;
     private int hpValue;
@@ -11,7 +14,7 @@ public class Item {
 
 
     //Default constructor for Jackson JSON objects
-    public void location() {
+    public Item () {
         super();
     }
 
