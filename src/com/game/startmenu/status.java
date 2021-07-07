@@ -61,7 +61,6 @@ public class status {
                 System.out.println("Nothing there to grab!");
             } else {
                 inventoryArray.remove(removeItem);
-                System.out.println(gameWorld.getPlanet1().get(currentLoc));
             }
 
 
@@ -101,9 +100,9 @@ public class status {
         System.out.println("=========================================");
         System.out.println("Description: " + currentLocData.getDescription());
         System.out.println("\n");
-        System.out.println("Items you see: " + currentLocData.getItems());
+        System.out.println("Items you see: " + gameWorld.getItemsByLocation(currentLoc));
         System.out.println("=========================================");
-        System.out.println("Name: " + Player.getName() + " | Current Inventory:" + Player.viewInventory());
+        System.out.println("Name: " + Player.getName() + " | Current Inventory: " + Player.viewInventory());
         System.out.println("-----------------------------------------");
         System.out.println("Last action taken: " + action + " "+ noun);
 
