@@ -18,9 +18,17 @@ public class gameWorld {
     //Fields for Game Assets
     private static HashMap<String, location> planet1;
     private static HashMap<String, ArrayList<Item>> gameItems;
-    private static HashMap<String, Item> hiddenItems;
+    private static HashMap<String, ArrayList<Item>> hiddenItems;
 
     public gameWorld() throws IOException {
+        createGameAssets();
+    }
+
+
+// Methods
+
+
+    private void createGameAssets() throws IOException{
         //Load our locations from planet1.json file into array of location objects
         byte[] locationData = Files.readAllBytes(Paths.get("src/com/game/world/planet1.json"));
         ObjectMapper objectMapper = new ObjectMapper();
@@ -31,7 +39,6 @@ public class gameWorld {
         for (location loc: location ) {
             planet1.put(loc.getName(), loc);
         }
-
         //Create Array of Items from JSON
         byte[] itemData = Files.readAllBytes(Paths.get("src/com/game/items/items.json"));
         Item[] itemsArray = objectMapper.readValue(itemData,Item[].class);
@@ -52,36 +59,19 @@ public class gameWorld {
             gameItems.get(item.getLocation()).add(item);
         }
 
-
         //Create Hidden Items hashmap
-        hiddenItems = new HashMap<>();
+        byte[] hiddenItemData = Files.readAllBytes(Paths.get("src/com/game/items/hidden.json"));
+        Item[] hiddenItemsArray = objectMapper.readValue(hiddenItemData,Item[].class);
 
+        hiddenItems = new HashMap<>(numberOfLocations);
+        for (location loc: location) {
+            hiddenItems.put(loc.getName(),new ArrayList<Item>());
+        }
+        for (Item hiddenitem : hiddenItemsArray) {
+            hiddenItems.get(hiddenitem.getLocation()).add(hiddenitem);
+        }
     }
 
-    //Getters for planets
-    public static HashMap<String, location> getPlanet1() {
-        return planet1;
-    }
-
-    public static HashMap<String, ArrayList<Item>> getGameItems() {
-        return gameItems;
-    }
-
-    public static void setGameItems(String loc, ArrayList<Item> name) {
-        gameItems.put(loc, name);
-    }
-
-    public static HashMap<String, Item> getHiddenItems() {
-        return hiddenItems;
-    }
-
-    public static void setHiddenItems(String loc, Item name) {
-        hiddenItems.put(loc,name);
-    }
-
-    public static String getCurrentLocation() {
-        return currentLocation;
-    }
 
     public static String getNextLocation(String currentLocationArg, String direction) {
         String nextLocation = "";
@@ -99,6 +89,60 @@ public class gameWorld {
                 nextLocation = planet1.get(currentLocationArg).getWest();
         }
         return nextLocation;
+    }
+
+
+    public static void addGameItem(String loc, Item name) {
+        if (loc != null && !loc.equals("")) {
+            gameItems.get(loc).add(name);
+        }
+
+    }
+
+    public static void removeGameItem(String loc, Item name) {
+        if (loc != null && !loc.equals("")) {
+            gameItems.get(loc).remove(name);
+        }
+    }
+
+    public static void removeHiddenItem(String loc, Item name) {
+        if (loc != null && !loc.equals("")) {
+            hiddenItems.get(loc).remove(name);
+        }
+    }
+
+    public static StringBuilder getItemsByLocation(String loc) {
+        if (loc == null || loc.equals("")) {
+            return null;
+        }
+
+        ArrayList<Item> itemsArray = gameItems.get(loc);
+        StringBuilder LocationItems = new StringBuilder();
+
+        for (Item item:itemsArray) {
+            LocationItems.append(item.getItemName()).append(" ");
+        }
+
+
+        return LocationItems;
+    }
+
+    //Getters & Setters for planets & items
+    public static HashMap<String, location> getPlanet1() {
+        return planet1;
+    }
+
+    public static HashMap<String, ArrayList<Item>> getGameItems() {
+        return gameItems;
+    }
+
+    public static HashMap<String, ArrayList<Item>> getHiddenItems() {
+        return hiddenItems;
+    }
+
+
+    public static String getCurrentLocation() {
+        return currentLocation;
     }
 
     public static void setCurrentLocation(String newLocation) {
