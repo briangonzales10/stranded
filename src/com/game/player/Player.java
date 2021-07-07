@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Player {
     private static String name;
+
     private static ArrayList<Item> inventory = new ArrayList<Item>();
     //private String currentLocation = "Crash Site";
 
@@ -38,9 +39,13 @@ public class Player {
 
 
 
-    //Inventory method will go below
+    //Inventory methods will go below
     public static void addItem(Item item){
         inventory.add(item);
+    }
+
+    public static ArrayList<Item> getInventory() {
+        return inventory;
     }
 
     public static StringBuilder viewInventory(){
@@ -51,6 +56,18 @@ public class Player {
         }
         return inventoryString;
     }
+
+    public static boolean keyItemCheck(){
+        boolean keyItemInInventory = false;
+        for(Item item: inventory){
+            if(item.isKeyItem() == true){
+                keyItemInInventory = true;
+            }
+        }
+        return keyItemInInventory;
+    }
+
+
 
 
 
