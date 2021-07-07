@@ -2,6 +2,7 @@ package com.game;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.game.items.Item;
 import com.game.player.Player;
 import com.game.world.gameWorld;
 import com.game.world.location;
@@ -11,10 +12,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class game {
     public static void main(String[] args) throws IOException {
+        gameWorld game = new gameWorld();
+
+        //Testing for items
+        HashMap<String, ArrayList<Item>> gameItems = gameWorld.getGameItems();
+        String itemJSON = new ObjectMapper().writeValueAsString(gameItems);
+        System.out.println("******ITEMS********");
+        System.out.println(itemJSON);
+        System.out.println("******ITEMS********");
+
         //testing for game world
         // Testing .json to Java Location Objects...
         byte[] locationData = Files.readAllBytes(Paths.get("src/com/game/world/planet1.json"));
@@ -32,7 +43,7 @@ public class game {
         System.out.println("******");
 
 
-        gameWorld game = new gameWorld();
+
 
         HashMap<String, location> planet1 = game.getPlanet1();
 

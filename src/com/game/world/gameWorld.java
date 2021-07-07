@@ -1,10 +1,12 @@
 package com.game.world;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.game.items.Item;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -13,8 +15,10 @@ public class gameWorld {
     private static String currentLocation = "Crash Site";
     private static String previousLocation = "Crash Site";
 
-    //Field for each planet
+    //Fields for Game Assets
     private static HashMap<String, location> planet1;
+    private static HashMap<String, ArrayList<Item>> gameItems;
+    private static HashMap<String, Item> hiddenItems;
 
     public gameWorld() throws IOException {
         //Load our locations from planet1.json file into array of location objects
@@ -28,11 +32,51 @@ public class gameWorld {
             planet1.put(loc.getName(), loc);
         }
 
+        //Create Array of Items from JSON
+        byte[] itemData = Files.readAllBytes(Paths.get("src/com/game/items/items.json"));
+        Item[] itemsArray = objectMapper.readValue(itemData,Item[].class);
+
+        //Create our hashmap to hold our Array List for game items
+        int numberOfLocations = locationData.length;
+        gameItems = new HashMap<>(numberOfLocations);
+
+        //Create Array List for each location
+        for (location loc: location) {
+            gameItems.put(loc.getName(),new ArrayList<Item>());
+        }
+
+        //Load our Items into their respective location ArrayList
+
+        for (Item item: itemsArray) {
+            //Looks up the correct ArrayList based on item location in Hashmap, and adds Item element to the ArrayList
+            gameItems.get(item.getLocation()).add(item);
+        }
+
+
+        //Create Hidden Items hashmap
+        hiddenItems = new HashMap<>();
+
     }
 
     //Getters for planets
     public static HashMap<String, location> getPlanet1() {
         return planet1;
+    }
+
+    public static HashMap<String, ArrayList<Item>> getGameItems() {
+        return gameItems;
+    }
+
+    public static void setGameItems(String loc, ArrayList<Item> name) {
+        gameItems.put(loc, name);
+    }
+
+    public static HashMap<String, Item> getHiddenItems() {
+        return hiddenItems;
+    }
+
+    public static void setHiddenItems(String loc, Item name) {
+        hiddenItems.put(loc,name);
     }
 
     public static String getCurrentLocation() {

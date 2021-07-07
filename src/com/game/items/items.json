@@ -1,0 +1,48 @@
+﻿[
+	{
+		"id": 1,
+		"hpValue": 0,
+		"type": "tool",
+		"itemName": "shovel",
+		"location": "Frozen Tundra",
+		"description": "A shovel to dig your spacecraft out of the mess you made",
+		"keyItem": true
+	},
+	{
+		"id": 2,
+		"hpValue": 0,
+		"type": "tool",
+		"itemName": "toolset",
+		"location": "Crater",
+		"description": "How did your toolset fall out here? You need these to fix your craft.",
+		"keyItem": true
+	},
+	{
+		"id": 3,
+		"hpValue": 20,
+		"type": "food",
+		"itemName": "fruit",
+		"location": "Jungle",
+		"description": "Delicious exotic fruit",
+		"keyItem": false
+	},
+	{
+		"id": 4,
+		"hpValue": 15,
+		"type": "food",
+		"itemName": "fish",
+		"location": "Beach",
+		"description": "A flopping fish.  You're not a huge fan of sushi though..",
+		"keyItem": false
+
+	},
+	{
+		"id": 5,
+		"hpValue": 20,
+		"type": "food",
+		"itemName": "water",
+		"location": "Creek",
+		"description": "Looks like clear alien water.  No way it could hurt right?",
+		"keyItem": false
+	}
+]
