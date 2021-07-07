@@ -1,8 +1,13 @@
 package com.game.textparser;
 
 
+import com.game.items.Item;
 import com.game.player.Player;
+import com.game.world.gameWorld;
+import com.game.world.location;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class UserInput {
@@ -13,6 +18,7 @@ public class UserInput {
     private static String itemGrabbed = "nothing";
     private static String useItemGrabbed = "nothing";
     private static String locationToSearch = "here";
+    private static String itemDropped = "none";
 
     public static String setPlayerName(){
         /*Takes user input and returns it so it can be stored as the name in the Player class. If the name is blank,
@@ -49,6 +55,8 @@ public class UserInput {
             inputStringArray[1] = useItem(inputStringArray);
         } else if (inputStringArray[0].equals("search")) {
             inputStringArray[1] = search(inputStringArray);
+        } else if (inputStringArray[0].equals("drop")){
+            inputStringArray[1] = dropItem(inputStringArray);
         } else {
             return invalidArray;
         }
@@ -76,6 +84,7 @@ public class UserInput {
         return itemGrabbed;
     }
 
+    //Need to update on commands engine
     public static String useItem(String[] inputStringArrayArg){
         String inventoryString = Player.viewInventory().toString();
         if(inventoryString.contains(inputStringArrayArg[1])){
@@ -88,13 +97,21 @@ public class UserInput {
 
     }
 
+    //needs validation?
     public static String search(String[] inputStringArrayArg){
         return locationToSearch;
     }
 
-
-
-
+    //Validation handled by status
+    public static String dropItem(String[] inputStringArray) {
+        String inventoryString = Player.viewInventory().toString();
+        if (inventoryString.contains(inputStringArray[1])) {
+            itemDropped = inputStringArray[1];
+        } else {
+            itemDropped = "";
+        }
+        return itemDropped;
+    }
 
 
 }
