@@ -46,9 +46,11 @@ public class status {
             HashMap<String, ArrayList<Item>> inventoryMap = gameWorld.getGameItems();
             ArrayList<Item> inventoryArray = inventoryMap.get(currentLoc);
             int count = 0;
+            Item removeItem = null;
             for(Item item: inventoryArray){
                 if(item.getItemName().equals(command[1])){
                     Player.addItem(item);
+                    removeItem = item;
                     System.out.println(item.getItemName() + " grabbed!");
                 } else {
                     count += 1;
@@ -58,7 +60,8 @@ public class status {
             if (count == inventoryArray.size()){
                 System.out.println("Nothing there to grab!");
             } else {
-                gameWorld.getPlanet1().get(currentLoc).setItems(""); //removes item from loc inventory
+                inventoryArray.remove(removeItem);
+                System.out.println(gameWorld.getPlanet1().get(currentLoc));
             }
 
 
