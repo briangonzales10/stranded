@@ -1,12 +1,14 @@
 package com.game.player;
 
+import com.game.items.Item;
 import com.game.textparser.UserInput;
 
 import java.util.ArrayList;
 
 public class Player {
     private static String name;
-    private static ArrayList<String> inventory = new ArrayList<>();
+
+    private static ArrayList<Item> inventory = new ArrayList<Item>();
     //private String currentLocation = "Crash Site";
 
     public Player(){
@@ -37,19 +39,35 @@ public class Player {
 
 
 
-    //Inventory method will go below
-    public static void addItem(String item){
+    //Inventory methods will go below
+    public static void addItem(Item item){
         inventory.add(item);
+    }
+
+    public static ArrayList<Item> getInventory() {
+        return inventory;
     }
 
     public static StringBuilder viewInventory(){
         StringBuilder inventoryString = new StringBuilder();
 
-        for(String item: inventory){
-            inventoryString.append(item).append(" ");
+        for(Item item: inventory){
+            inventoryString.append(item.getItemName()).append(" ");
         }
         return inventoryString;
     }
+
+    public static boolean keyItemCheck(){
+        boolean keyItemInInventory = false;
+        for(Item item: inventory){
+            if(item.isKeyItem() == true){
+                keyItemInInventory = true;
+            }
+        }
+        return keyItemInInventory;
+    }
+
+
 
 
 

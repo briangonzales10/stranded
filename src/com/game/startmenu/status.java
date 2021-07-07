@@ -1,9 +1,13 @@
 package com.game.startmenu;
 
+import com.game.items.Item;
 import com.game.player.Player;
 import com.game.textparser.UserInput;
 import com.game.world.gameWorld;
 import com.game.world.location;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class status {
 
@@ -19,8 +23,14 @@ public class status {
 
     public void action(String[] command) throws IllegalArgumentException{
     //command[0] is action, command[1] is direction/item/etc.
+
+        //Initialize variables for action logic
         String currentLoc = gameWorld.getCurrentLocation();
         location currentLocData = gameWorld.getPlanet1().get(currentLoc);
+        HashMap<String, ArrayList<Item>> inventoryMap = gameWorld.getGameItems();
+        ArrayList<Item> inventoryArray = inventoryMap.get(currentLoc);
+        HashMap<String, ArrayList<Item>> hiddenItemsMap = gameWorld.getHiddenItems();
+        ArrayList<Item> hiddenItemsArray = hiddenItemsMap.get(currentLoc);
 
         if (currentLoc == null || currentLoc.equals("")) {
             currentLoc = gameWorld.getPreviousLocation();
@@ -39,27 +49,60 @@ public class status {
         if (command[0].equals("grab")) {
             //execute grab command & add item to player inventory / remove from room inventory
 
-            if (!command[1].equals(currentLocData.getItems())) {
-                System.out.println("Nothing there to grab!");
-                UserInput.action();
+
+            int count = 0;
+            Item removeItem = null;
+            for(Item item: inventoryArray){
+                if(item.getItemName().equals(command[1])){
+                    Player.addItem(item);
+                    removeItem = item;
+                    System.out.println(item.getItemName() + " grabbed!");
+                } else {
+                    count += 1;
+                }
             }
-            Player.addItem(command[1]);
-            System.out.println(command[1] + " grabbed!");
-            gameWorld.getPlanet1().get(currentLoc).setItems(""); //removes item from loc inventory
+
+            if (count == inventoryArray.size()){
+                System.out.println("Nothing there to grab!");
+            } else {
+                inventoryArray.remove(removeItem);
+            }
+
 
         }
 
         if (command[0].equals("search")) {
             //Execute Search command and reveal hidden items in room + add to room inventory
-            //Temporary fix for grabbing hidden items until we change item to an array list
-            String hiddenItem = gameWorld.getPlanet1().get(currentLoc).getHiddenItems();
-            if (currentLocData.getItems() == null || currentLocData.getItems().equals("")) {
-                currentLocData.setItems(currentLocData.getHiddenItems()); // sets Location item to hidden item
-            } else {
-                System.out.println("There's a hidden item but the " + currentLocData.getItems() +" is in the way");
+
+            for (Item hiddenItem: hiddenItemsArray) {
+                if (hiddenItem != null) {
+                    System.out.println(hiddenItem.getItemName() + " uncovered!");
+                    inventoryArray.add(hiddenItem);
+                }
+                else {
+                    System.out.println("No hidden items found.");
+                }
             }
+
+
         }
-        //else throw new IllegalArgumentException("not valid commands");
+
+        if (command[0].equals("drop")) {
+            //user types drop + item name from player inventory
+            ArrayList<Item> playerItems = Player.getInventory();
+            Item dropItem = null;
+            for (Item item : playerItems){
+                if (item.getItemName().equals(command[1])) { //If item from player's inventory matches dropped item
+                    dropItem = item;
+                    //item is added to current location inventory
+                    inventoryArray.add(item);
+                }
+            }
+            playerItems.remove(dropItem);
+
+
+        }
+
 
         //Set commands for last action taken by user
         setAction(command[0]);
@@ -79,9 +122,9 @@ public class status {
         System.out.println("=========================================");
         System.out.println("Description: " + currentLocData.getDescription());
         System.out.println("\n");
-        System.out.println("Items you see: " + currentLocData.getItems());
+        System.out.println("Items you see: " + gameWorld.getItemsByLocation(currentLoc));
         System.out.println("=========================================");
-        System.out.println("Name: " + Player.getName() + " | Current Inventory:" + Player.viewInventory());
+        System.out.println("Name: " + Player.getName() + " | Current Inventory: " + Player.viewInventory());
         System.out.println("-----------------------------------------");
         System.out.println("Last action taken: " + action + " "+ noun);
 
@@ -95,7 +138,7 @@ public class status {
             https://www.delftstack.com/howto/java/java-clear-console/
          */
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         try{
             String operatingSystem = System.getProperty("os.name"); //Check the current operating system
