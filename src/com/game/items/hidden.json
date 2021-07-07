@@ -1,0 +1,11 @@
+﻿[
+	{
+		"id": 11,
+		"hpValue": 30,
+		"type": "weapon",
+		"itemName": "pistol",
+		"description": "A lowest bidder made pistol. Hopefully you won't have too much trouble",
+		"keyItem": false,
+		"location": "Crash Site"
+	}
+]
