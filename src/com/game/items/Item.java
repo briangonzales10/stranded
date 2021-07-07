@@ -5,21 +5,26 @@ public class Item {
     private int hpValue;
     private String type;
     private String itemName;
+    private String location;
     private String description;
-    private boolean keyItem = true;
+    private boolean keyItem = false;
 
 
+    //Default constructor for Jackson JSON objects
+    public void location() {
+        super();
+    }
 
-
-    public Item(int id, int hpValue, String type, String itemName, String description, boolean keyItem) {
+    public Item(int id, int hpValue, String type, String itemName, String location, String description, boolean keyItem) {
         Id = id;
         this.hpValue = hpValue;
+        this.type = type;
         this.itemName = itemName;
+        this.location = location;
         this.description = description;
         this.keyItem = keyItem;
-        
-
     }
+
 
     public int getId() {
         return Id;
@@ -37,12 +42,28 @@ public class Item {
         this.hpValue = hpValue;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getItemName() {
         return itemName;
     }
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getDescription() {
@@ -60,13 +81,6 @@ public class Item {
     public void setKeyItem(boolean keyItem) {
         this.keyItem = keyItem;
     }
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     @Override
     public String toString() {
@@ -75,6 +89,7 @@ public class Item {
                 ", hpValue=" + hpValue +
                 ", type='" + type + '\'' +
                 ", itemName='" + itemName + '\'' +
+                ", location='" + location + '\'' +
                 ", description='" + description + '\'' +
                 ", keyItem=" + keyItem +
                 '}';
