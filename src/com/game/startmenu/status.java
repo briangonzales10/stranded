@@ -1,9 +1,13 @@
 package com.game.startmenu;
 
+import com.game.items.Item;
 import com.game.player.Player;
 import com.game.textparser.UserInput;
 import com.game.world.gameWorld;
 import com.game.world.location;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class status {
 
@@ -39,14 +43,28 @@ public class status {
         if (command[0].equals("grab")) {
             //execute grab command & add item to player inventory / remove from room inventory
 
-            if (!command[1].equals(currentLocData.getItems())) {
-                System.out.println("Nothing there to grab!");
-                //UserInput.action();
-            } else {
-                Player.addItem(command[1]);
-                System.out.println(command[1] + " grabbed!");
-                gameWorld.getPlanet1().get(currentLoc).setItems(""); //removes item from loc inventory
+            HashMap<String, ArrayList<Item>> inventoryMap = gameWorld.getGameItems();
+            ArrayList<Item> inventoryArray = inventoryMap.get(currentLoc);
+            int count = 0;
+            Item removeItem = null;
+            for(Item item: inventoryArray){
+                if(item.getItemName().equals(command[1])){
+                    Player.addItem(item);
+                    removeItem = item;
+                    System.out.println(item.getItemName() + " grabbed!");
+                } else {
+                    count += 1;
+                }
             }
+
+            if (count == inventoryArray.size()){
+                System.out.println("Nothing there to grab!");
+            } else {
+                inventoryArray.remove(removeItem);
+                System.out.println(gameWorld.getPlanet1().get(currentLoc));
+            }
+
+
         }
 
         if (command[0].equals("search")) {
