@@ -36,11 +36,11 @@ public class main {
 
                     if (gameWorld.getCurrentLocation() != null){
 
-                        if(Player.keyItemCheck() && gameWorld.getCurrentLocation().equals("Crash Site")){
+                        if(Player.keyItemCheck() == 2 && gameWorld.getCurrentLocation().equals("Crash Site")){
                             gameWorld.setCurrentLocation("Landing Site");
                         }
 
-                        if (Player.keyItemCheck() && gameWorld.getCurrentLocation().equals("Landing Site")) {
+                        if (Player.keyItemCheck() == 3 && gameWorld.getCurrentLocation().equals("Landing Site")) {
                             Win.youWin();
                             Run = false;
                             isRunning = false;
