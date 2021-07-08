@@ -1,5 +1,6 @@
 package com.game;
 
+import com.game.conditions.Win;
 import com.game.player.Player;
 import com.game.startmenu.StartMenu;
 import com.game.startmenu.status;
@@ -34,13 +35,16 @@ public class main {
                 while (!move) {
 
                     if (gameWorld.getCurrentLocation() != null){
-                        if (Player.keyItemCheck() && gameWorld.getCurrentLocation().equals("Landing Site")){
-                            //Return to Earth
-                            //End Game
-                        }
 
                         if(Player.keyItemCheck() && gameWorld.getCurrentLocation().equals("Crash Site")){
                             gameWorld.setCurrentLocation("Landing Site");
+                        }
+
+                        if (Player.keyItemCheck() && gameWorld.getCurrentLocation().equals("Landing Site")) {
+                            Win.youWin();
+                            Run = false;
+                            isRunning = false;
+                            break;
                         }
                     }
 
