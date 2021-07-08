@@ -74,7 +74,7 @@
 	{
 		"locationId": 9,
 		"name": "Far East Crater",
-		"description": "You fall into dark and cold crater.  You see frozen ice on the surface.  Maybe you can dig a hole and replenish some water.\"",
+		"description": "A deep dark and cold crater...untouched",
 		"north": null,
 		"east": null,
 		"south": null,
@@ -83,25 +83,25 @@
 	{
 		"locationId": 10,
 		"name": "Abandoned Storage Facility",
-		"description": "There is a sign of a life here. Search for useful things. I see a refrigerator still running, let's open it up! ",
+		"description": "A storage facility...on the Dark side of the?",
 		"north": null,
-		"east": null,
+		"east": "Far East Crater",
 		"south": null,
 		"west": "Lava Tubes"
 	},
 	{
 		"locationId": 11,
 		"name": "Lava Tubes",
-		"description": "There must been volcanic activities here. You see lava tubes erected. You can leverage the tubes as your protection from Aliens. ",
+		"description": "Lava caves formed from a continuous flow of Lava",
 		"north": null,
-		"east": null,
+		"east": "Abandoned Storage Facility",
 		"south": "Abandoned Ship",
 		"west": null
 	},
 	{
 		"locationId": 12,
 		"name": "Abandoned Ship",
-		"description": "Jackpot! Let's see what you can salvage from the abandoned ship. ",
+		"description": "The lost ship from the 2022 mission! Could it be?",
 		"north": "Lava Tubes",
 		"east": null,
 		"south": "South Crater",
@@ -110,7 +110,7 @@
 	{
 		"locationId": 13,
 		"name": "South Crater",
-		"description": "This crater looks too deep to check out. You never know what you'll encounter with down there.",
+		"description": "Another deep dark crater full of footprints",
 		"north": "Abandoned Ship",
 		"east": null,
 		"south": null,
@@ -119,26 +119,26 @@
 	{
 		"locationId": 14,
 		"name": "Landing Site",
-		"description": "You landed on a random planet. You are low on fuel. You take a look around and see paths to the East and West.",
+		"description": "A planet similar to Earth's Moon",
 		"north": null,
 		"east": "Abandoned Ship",
 		"south": null,
-		"west": "Alien Compound Combat"
+		"west": "Alien Compound"
 	},
 	{
 		"locationId": 15,
-		"name": "Alien Compound Combat",
-		"description": "Oh no, the aliens spot you and start to attack!",
+		"name": "Alien Compound",
+		"description": "The smell...the horrible smell",
 		"north": null,
-		"east": "Landing Site",
+		"east": "Landing site",
 		"south": "Lava Tube",
-		"west": null
+		"west": "null"
 	},
 	{
 		"locationId": 16,
 		"name": "Lava Tube",
-		"description": "Looks like this can be a great shelter. Let's start a fire. ",
-		"north": "Alien Compound Combat",
+		"description": "A single pre-historic lava cave",
+		"north": "Alien Compound",
 		"east": null,
 		"south": null,
 		"west": "Rock Shrine"
@@ -146,7 +146,7 @@
 	{
 		"locationId": 17,
 		"name": "Rock Shrine",
-		"description": "Up there lies a shrine, and once you're done paying your honors, you will obtain a new charm.",
+		"description": "Memorial rocks...for who?",
 		"north": null,
 		"east": "Lava Tube",
 		"south": "Dead Volcano",
@@ -155,7 +155,7 @@
 	{
 		"locationId": 18,
 		"name": "Dead Volcano",
-		"description": "Looks like this volcano is not going to erupt but, looks like there are some parts still simmering under. You should be careful. ",
+		"description": "A volcano that appears to have been dormant for some time",
 		"north": "Rock Shrine",
 		"east": null,
 		"south": null,
@@ -164,7 +164,7 @@
 	{
 		"locationId": 19,
 		"name": "Fuel Outpost",
-		"description": "Finally arrived at outpost. Refuel your ship and resupply your items. ",
+		"description": "An old fuel outpost",
 		"north": null,
 		"east": "Dead Volcano",
 		"south": null,

@@ -1,5 +1,6 @@
 package com.game;
 
+import com.game.conditions.Win;
 import com.game.player.Player;
 import com.game.startmenu.StartMenu;
 import com.game.startmenu.status;
@@ -32,8 +33,23 @@ public class main {
                 boolean move = false;
 
                 while (!move) {
-                    status.display();
 
+                    if (gameWorld.getCurrentLocation() != null){
+
+                        if(Player.keyItemCheck() == 2 && gameWorld.getCurrentLocation().equals("Crash Site")){
+                            gameWorld.setCurrentLocation("Landing Site");
+                        }
+
+                        if (Player.keyItemCheck() == 3 && gameWorld.getCurrentLocation().equals("Landing Site")) {
+                            Win.youWin();
+                            Run = false;
+                            isRunning = false;
+                            break;
+                        }
+                    }
+
+
+                    status.display();
                     String[] action = UserInput.action();// ==> [go,west]
                     //send action to a class to update location/inventory/status etc.
                     status.action(action);
