@@ -70,6 +70,104 @@
 		"east": null,
 		"south": null,
 		"west": null
+	},
+	{
+		"locationId": 9,
+		"name": "Far East Crater",
+		"description": "A deep dark and cold crater...untouched",
+		"north": null,
+		"east": null,
+		"south": null,
+		"west": "Abandoned Storage Facility"
+	},
+	{
+		"locationId": 10,
+		"name": "Abandoned Storage Facility",
+		"description": "A storage facility...on the Dark side of the?",
+		"north": null,
+		"east": "Far East Crater",
+		"south": null,
+		"west": "Lava Tubes"
+	},
+	{
+		"locationId": 11,
+		"name": "Lava Tubes",
+		"description": "Lava caves formed from a continuous flow of Lava",
+		"north": null,
+		"east": "Abandoned Storage Facility",
+		"south": "Abandoned Ship",
+		"west": null
+	},
+	{
+		"locationId": 12,
+		"name": "Abandoned Ship",
+		"description": "The lost ship from the 2022 mission! Could it be?",
+		"north": "Lava Tubes",
+		"east": null,
+		"south": "South Crater",
+		"west": "Landing Site"
+	},
+	{
+		"locationId": 13,
+		"name": "South Crater",
+		"description": "Another deep dark crater full of footprints",
+		"north": "Abandoned Ship",
+		"east": null,
+		"south": null,
+		"west": null
+	},
+	{
+		"locationId": 14,
+		"name": "Landing Site",
+		"description": "A planet similar to Earth's Moon",
+		"north": null,
+		"east": "Abandoned Ship",
+		"south": null,
+		"west": "Alien Compound"
+	},
+	{
+		"locationId": 15,
+		"name": "Alien Compound",
+		"description": "The smell...the horrible smell",
+		"north": null,
+		"east": "Landing Site",
+		"south": "Lava Tube",
+		"west": null
+	},
+	{
+		"locationId": 16,
+		"name": "Lava Tube",
+		"description": "A single pre-historic lava cave",
+		"north": "Alien Compound",
+		"east": null,
+		"south": null,
+		"west": "Rock Shrine"
+	},
+	{
+		"locationId": 17,
+		"name": "Rock Shrine",
+		"description": "Memorial rocks...for who?",
+		"north": null,
+		"east": "Lava Tube",
+		"south": "Dead Volcano",
+		"west": null
+	},
+	{
+		"locationId": 18,
+		"name": "Dead Volcano",
+		"description": "A volcano that appears to have been dormant for some time",
+		"north": "Rock Shrine",
+		"east": null,
+		"south": null,
+		"west": "Fuel Outpost"
+	},
+	{
+		"locationId": 19,
+		"name": "Fuel Outpost",
+		"description": "An old fuel outpost",
+		"north": null,
+		"east": "Dead Volcano",
+		"south": null,
+		"west": null
 	}
-
 ]
