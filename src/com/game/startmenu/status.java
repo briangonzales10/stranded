@@ -2,7 +2,6 @@ package com.game.startmenu;
 
 import com.game.items.Item;
 import com.game.player.Player;
-import com.game.textparser.UserInput;
 import com.game.world.gameWorld;
 import com.game.world.location;
 
@@ -27,7 +26,6 @@ public class status {
 
         //Initialize variables for action logic
         String currentLoc = gameWorld.getCurrentLocation();
-        location currentLocData = gameWorld.getPlanet1().get(currentLoc);
         HashMap<String, ArrayList<Item>> inventoryMap = gameWorld.getGameItems();
         ArrayList<Item> inventoryArray = inventoryMap.get(currentLoc);
         HashMap<String, ArrayList<Item>> hiddenItemsMap = gameWorld.getHiddenItems();
