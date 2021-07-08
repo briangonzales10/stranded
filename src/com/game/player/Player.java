@@ -7,13 +7,17 @@ import java.util.ArrayList;
 
 public class Player {
     private static String name;
+    private static int HP;
+    private static final int MAX_HP = 100;
+    private static final int MIN_HP = 0;
 
     private static ArrayList<Item> inventory = new ArrayList<Item>();
-    //private String currentLocation = "Crash Site";
+
 
     public Player(){
         setName();
-
+        //setHP(MAX_HP);
+        setHP(85); //for testing
     }
 
     //Name Getter and Setter
@@ -26,18 +30,32 @@ public class Player {
         System.out.println("Welcome aboard Commander " + name + "!");
     }
 
-    //Location
-   /* public String getCurrentLocation(){
-        return currentLocation;
+    public static int getHP() {
+        return HP;
+    }
+    // HP Getters & Setters
+    public static void setHP(int HP) {
+        // If HP value is negative and takes HP below 0, just set to MIN_HP
+        if (Player.HP + HP < MIN_HP) {
+            Player.HP = MIN_HP;
+        }
+        // If HP value is positive and takes HP above 100, set to MAX_HP
+        else if (Player.HP + HP > MAX_HP){
+            Player.HP = MAX_HP;
+        } else {
+        // Else just add/subtract to Player HP.
+            Player.HP += HP;
+        }
+
     }
 
-    */
-
-    public void setCurrentLocation(){
-        //Need to add logic to set Location
+    public static int getMaxHp() {
+        return MAX_HP;
     }
 
-
+    public static int getMinHp() {
+        return MIN_HP;
+    }
 
     //Inventory methods will go below
     public static void addItem(Item item){
