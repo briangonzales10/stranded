@@ -1,6 +1,6 @@
 ﻿[
 	{
-		"id": 1,
+		"id": 31,
 		"hpValue": 0,
 		"type": "tool",
 		"itemName": "shovel",
@@ -9,7 +9,7 @@
 		"keyItem": true
 	},
 	{
-		"id": 2,
+		"id": 32,
 		"hpValue": 0,
 		"type": "tool",
 		"itemName": "toolset",
@@ -18,7 +18,7 @@
 		"keyItem": true
 	},
 	{
-		"id": 3,
+		"id": 33,
 		"hpValue": 20,
 		"type": "food",
 		"itemName": "fruit",
@@ -27,7 +27,7 @@
 		"keyItem": false
 	},
 	{
-		"id": 4,
+		"id": 34,
 		"hpValue": 15,
 		"type": "food",
 		"itemName": "fish",
@@ -37,12 +37,32 @@
 
 	},
 	{
-		"id": 5,
+		"id": 35,
 		"hpValue": 20,
 		"type": "food",
 		"itemName": "water",
 		"location": "Creek",
 		"description": "Looks like clear alien water.  No way it could hurt right?",
 		"keyItem": false
+	},
+	{
+		"id": 36,
+		"hpValue": 30,
+		"type": "other",
+		"itemName": "campsite",
+		"location": "Far East Crater",
+		"description": "Seem like you can spend a night or two here. ",
+		"keyItem": false
+	},
+	{
+		"id": 37,
+		"hpValue": 11,
+		"type": "tool",
+		"itemName": "empty fuel can",
+		"location": "Lava Tube",
+		"description": "Great! You can now have more backup fuel. ",
+		"keyItem": false
 	}
+
+
 ]

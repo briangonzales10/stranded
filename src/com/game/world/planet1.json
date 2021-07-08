@@ -130,9 +130,9 @@
 		"name": "Alien Compound",
 		"description": "The smell...the horrible smell",
 		"north": null,
-		"east": "Landing Site",
+		"east": "Landing site",
 		"south": "Lava Tube",
-		"west": null
+		"west": "null"
 	},
 	{
 		"locationId": 16,
