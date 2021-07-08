@@ -3,8 +3,10 @@ package com.game.world;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.items.Item;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,10 +29,12 @@ public class gameWorld {
 
 // Methods
 
-
     private void createGameAssets() throws IOException{
         //Load our locations from planet1.json file into array of location objects
-        byte[] locationData = Files.readAllBytes(Paths.get("src/com/game/world/planet1.json"));
+        //File directory = new File("./");
+        //System.out.println(directory.getAbsolutePath());
+
+        byte[] locationData = Files.readAllBytes(Paths.get("src/com/world/planet1.json"));
         ObjectMapper objectMapper = new ObjectMapper();
         location[] location = objectMapper.readValue(locationData, location[].class);
 
