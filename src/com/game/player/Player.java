@@ -75,14 +75,14 @@ public class Player {
         return inventoryString;
     }
 
-    public static boolean keyItemCheck(){
-        boolean keyItemInInventory = false;
+    public static int keyItemCheck(){
+        int keyItemsInInventory = 0;
         for(Item item: inventory){
             if(item.isKeyItem() == true){
-                keyItemInInventory = true;
+                keyItemsInInventory += 1;
             }
         }
-        return keyItemInInventory;
+        return keyItemsInInventory;
     }
 
 
