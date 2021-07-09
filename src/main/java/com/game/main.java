@@ -29,6 +29,7 @@ public class main {
 
             while (player == null) {
                  player = new Player();
+                 Run = true;
 
             }
            while (Run) {
@@ -46,9 +47,16 @@ public class main {
 
                         if(Player.getHP() == 0){
                             Lose.youLose();
-                            Run = false;
-                            isRunning = false;
-                            break;
+                            if(UserInput.playAgain() == true){
+                                Run = false;
+                                player = null;
+                                break;
+                            } else {
+                                Run = false;
+                                isRunning = false;
+                                break;
+                            }
+
                         }
 
                         if (Player.keyItemCheck() == 3 && gameWorld.getCurrentLocation().equals("Landing Site")) {
