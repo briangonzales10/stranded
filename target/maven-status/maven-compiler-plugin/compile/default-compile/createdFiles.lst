@@ -1,0 +1,12 @@
+com\game\conditions\Win.class
+com\game\items\Item.class
+com\game\startmenu\status.class
+com\game\startmenu\StartMenu.class
+com\game\textparser\UserInput.class
+com\game\world\location.class
+com\game\world\gameWorld.class
+com\game\player\Player.class
+com\game\game.class
+com\game\main.class
+com\game\conditions\Lose.class
+com\game\textparser\Directions.class

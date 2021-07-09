@@ -3,10 +3,8 @@ package com.game.world;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.items.Item;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +32,7 @@ public class gameWorld {
         //File directory = new File("./");
         //System.out.println(directory.getAbsolutePath());
 
-        byte[] locationData = Files.readAllBytes(Paths.get("src/com/world/planet1.json"));
+        byte[] locationData = Files.readAllBytes(Paths.get("src/main/resources/planet1.json"));
         ObjectMapper objectMapper = new ObjectMapper();
         location[] location = objectMapper.readValue(locationData, location[].class);
 
@@ -44,7 +42,7 @@ public class gameWorld {
             planet1.put(loc.getName(), loc);
         }
         //Create Array of Items from JSON
-        byte[] itemData = Files.readAllBytes(Paths.get("src/com/game/items/items.json"));
+        byte[] itemData = Files.readAllBytes(Paths.get("src/main/resources/items.json"));
         Item[] itemsArray = objectMapper.readValue(itemData,Item[].class);
 
         //Create our hashmap to hold our Array List for game items
@@ -64,7 +62,7 @@ public class gameWorld {
         }
 
         //Create Hidden Items hashmap
-        byte[] hiddenItemData = Files.readAllBytes(Paths.get("src/com/game/items/hidden.json"));
+        byte[] hiddenItemData = Files.readAllBytes(Paths.get("src/main/resources/hidden.json"));
         Item[] hiddenItemsArray = objectMapper.readValue(hiddenItemData,Item[].class);
 
         hiddenItems = new HashMap<>(numberOfLocations);
