@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class main {
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         boolean isRunning = true;
         StartMenu start = new StartMenu();
         gameWorld ourGame = new gameWorld();

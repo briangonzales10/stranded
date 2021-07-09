@@ -1,6 +1,5 @@
 package com.game.startmenu;
 
-import javax.swing.*;
 import java.util.Scanner;
 
 public class StartMenu {
