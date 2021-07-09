@@ -1,5 +1,6 @@
 package com.game.startmenu;
 
+
 import com.game.items.Item;
 import com.game.player.Player;
 import com.game.world.gameWorld;
@@ -42,7 +43,10 @@ public class status {
            if (nextLoc == null || nextLoc.equals("")) {
                setResult("You can't go that way");
            }
-            gameWorld.setCurrentLocation(nextLoc); // Updates current location for player
+
+            // new method for moving player
+            Player.move(nextLoc);
+            setResult("Moving is tiring and HP draining on this planet..");
         }
 
         if (command[0].equals("grab")) {
@@ -99,7 +103,7 @@ public class status {
 
         }
 
-        if (command[0].equals("use")) {
+        if (command[0].equals("use") || command[0].equals("eat")) {
             //Check if command[1] is in player inventory
             Item usedItem = null;
             for (Item item : playerItems){
@@ -111,12 +115,13 @@ public class status {
                 setResult("You don't have " + command[1] +" in your inventory!");
             }
 
-            //check if food item, then setHP
+            //check if food item exists, then eat
             if (usedItem != null) {
 
                 if (usedItem.getType().equals("food")) {
-                    Player.setHP(usedItem.getHpValue());
-                    playerItems.remove(usedItem); // remove after using food
+
+                    Player.eat(usedItem);
+
                     setResult(command[1] + " used!");
                 }
                 else if (usedItem.getType().equals("weapon")) {
@@ -145,14 +150,14 @@ public class status {
         System.out.println("===================================================");
         System.out.println("Location: " + currentLocData.getName());
         System.out.println("===================================================");
-        System.out.println("Description: " + currentLocData.getDescription());
+        System.out.println("Description: " +  currentLocData.getDescription());
         System.out.println("\n");
         System.out.println("Items you see: " + gameWorld.getItemsByLocation(currentLoc));
         System.out.println("===================================================");
         System.out.println("Name: " + Player.getName() + " | HP: " + Player.getHP() + " / " + Player.getMaxHp());
         System.out.println("Current Inventory: " + Player.viewInventory());
         System.out.println("---------------------------------------------------");
-        System.out.println("Last action taken: " + action + " "+ noun);
+        System.out.println("Last action taken: " + getAction() + " "+ getNoun());
         System.out.println(getResult()); //Display action results
         setResult(""); //Reset action results for next action
 
