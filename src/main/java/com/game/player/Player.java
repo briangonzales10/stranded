@@ -1,16 +1,19 @@
 package com.game.player;
 
+import com.game.enemies.Alien;
 import com.game.items.Item;
 import com.game.textparser.UserInput;
 import com.game.world.gameWorld;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
 
     //Static Fields for player
     private static String name;
     private static int HP;
+    private static int defense;
     private static ArrayList<Item> inventory = new ArrayList<Item>();
     private static int movePenalty = -10;
 
@@ -23,6 +26,7 @@ public class Player {
         setName();
         //setHP(MAX_HP);
         setHP(85); //for testing
+        setDefense(1);
     }
     //Inventory methods will go below
     public static void addItem(Item item){
@@ -67,6 +71,42 @@ public class Player {
         gameWorld.setCurrentLocation(nextLoc);
     }
 
+    //Fight Methods
+    public static void attack(Alien alien, Item weapon) {
+        //Attack alien method!
+        Random rand = new Random();
+        int randDamage = 0;
+        int atkPower = 0;
+
+        if (weapon == null ) {
+            atkPower = 2; //Hand combat power
+            randDamage = rand.nextInt(atkPower);
+
+            alien.takeDamage(randDamage);
+            System.out.println("You have no weapons so you must use your fist!");
+        }
+        else {
+
+            if (weapon.getType().equals("weapon")) {
+                atkPower = weapon.getHpValue();
+
+                //Randomly generate damage amount greater than at least half the attack power
+                while (randDamage < (atkPower/2)) {
+                    randDamage = rand.nextInt(atkPower)+1;
+                }
+
+                System.out.println("You used your " + weapon.getItemName() + "!");
+                alien.takeDamage(randDamage);
+            }
+        }
+    }
+
+    public static void takeDamage(int AttackStr) {
+        int totalDamage = AttackStr/defense;
+
+        Player.setHP(-totalDamage);
+    }
+
     //Getters & Setters
     public static String getName(){
         return name;
@@ -102,6 +142,14 @@ public class Player {
 
     public static int getMinHp() {
         return MIN_HP;
+    }
+
+    public static int getDefense() {
+        return defense;
+    }
+
+    public static void setDefense(int defense) {
+        Player.defense = defense;
     }
 
     //Private getters & setters
