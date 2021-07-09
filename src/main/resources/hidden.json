@@ -1,7 +1,7 @@
 ﻿[
 	{
 		"id": 20,
-		"hpValue": 30,
+		"hpValue": 15,
 		"type": "weapon",
 		"itemName": "pistol",
 		"description": "A lowest bidder made pistol. Hopefully you won't have too much trouble",
@@ -28,8 +28,8 @@
 	},
 	{
 		"id": 23,
-		"hpValue": -70,
-		"type": "other",
+		"hpValue": -30,
+		"type": "food",
 		"itemName": "radiation",
 		"description": "Radiation detected from a nuclear powered engine. Suit up, otherwise you will die. ",
 		"keyItem": false,
@@ -37,8 +37,8 @@
 	},
 	{
 		"id": 24,
-		"hpValue": 80,
-		"type": "tool",
+		"hpValue": 30,
+		"type": "weapon",
 		"itemName": "flamethrower",
 		"description": "Good find. This can be a great defense when fighting the aliens. ",
 		"keyItem": true,
@@ -64,7 +64,7 @@
 	},
 	{
 		"id": 27,
-		"hpValue": 60,
+		"hpValue": 0,
 		"type": "tool",
 		"itemName": "fuel",
 		"description": "Awesome. You have acquired more fuel to get back to earth. ",
