@@ -1,5 +1,6 @@
 package com.game;
 
+import com.game.conditions.Lose;
 import com.game.conditions.Travel;
 import com.game.conditions.Win;
 import com.game.player.Player;
@@ -41,6 +42,10 @@ public class main {
                             Travel.goToAnotherPlanet();
                             Travel.lowFuelWarning();
                             gameWorld.setCurrentLocation("Landing Site");
+                        }
+
+                        if(Player.getHP() == 0){
+                            Lose.youLose();
                         }
 
                         if (Player.keyItemCheck() == 3 && gameWorld.getCurrentLocation().equals("Landing Site")) {
