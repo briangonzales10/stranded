@@ -1,5 +1,6 @@
 package com.game;
 
+import com.game.conditions.Travel;
 import com.game.conditions.Win;
 import com.game.player.Player;
 import com.game.startmenu.StartMenu;
@@ -37,6 +38,8 @@ public class main {
                     if (gameWorld.getCurrentLocation() != null){
 
                         if(Player.keyItemCheck() == 2 && gameWorld.getCurrentLocation().equals("Crash Site")){
+                            Travel.goToAnotherPlanet();
+                            Travel.lowFuelWarning();
                             gameWorld.setCurrentLocation("Landing Site");
                         }
 
