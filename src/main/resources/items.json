@@ -56,12 +56,12 @@
 	},
 	{
 		"id": 37,
-		"hpValue": 11,
+		"hpValue": 0,
 		"type": "tool",
 		"itemName": "empty fuel can",
 		"location": "Lava Tube",
 		"description": "Great! You can now have more backup fuel. ",
-		"keyItem": false
+		"keyItem": true
 	}
 
 
