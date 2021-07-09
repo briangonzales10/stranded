@@ -5,6 +5,7 @@ import com.game.items.Item;
 import com.game.player.Player;
 import com.game.world.gameWorld;
 import com.game.world.location;
+import jdk.jshell.Snippet;
 
 import java.util.Scanner;
 
@@ -109,6 +110,37 @@ public class UserInput {
             itemDropped = "";
         }
         return itemDropped;
+    }
+
+    public static boolean playAgain(){
+        boolean askForReplay = true;
+        int userNum = 0;
+        while (askForReplay){
+            System.out.println("Would you like to play Stranded again?");
+            System.out.println("Please enter the number for your choice");
+            System.out.println("1) Yes\n2) No");
+
+            try {
+                String userString = input.nextLine();
+                userNum = Integer.parseInt(userString);
+
+                if(userNum > 0 && userNum < 3){
+                    askForReplay = false;
+                    break;
+                } else {
+                    System.out.println("Invalid Choice");
+                    System.out.println("====================");
+                }
+
+            } catch (Exception e){
+                System.out.println("Invalid Choice");
+                System.out.println("====================");
+            }
+        }
+
+        return userNum == 1;
+
+
     }
 
 
