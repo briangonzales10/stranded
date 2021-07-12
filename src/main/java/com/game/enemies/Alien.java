@@ -1,6 +1,7 @@
 package com.game.enemies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.game.conditions.Combat;
 import com.game.player.Player;
 
 import java.util.Random;
@@ -62,22 +63,25 @@ public class Alien {
         int range = rand.nextInt(3)+1;
 
         int damage = attackDamage * range;
-        System.out.println(getType() + " attacks for " + damage);
+        Combat.setEnemyResult(getType() + " attacks for " + damage);
        return damage;
     }
 
     private int superAttack() {
         Random rand = new Random();
-        int range = rand.nextInt(6)+1;
+        int range = rand.nextInt(5)+1;
 
         int damage = attackDamage * range;
-        System.out.println(getType() + " attacks for " + damage);
+        Combat.setEnemyResult(getType() + " super attacks for " + damage);
         return damage;
     }
 
     public void takeDamage(int AttackStr) {
         int totalDamage = AttackStr/defense;
-        System.out.println( getType()+" took " + totalDamage + " damage!");
+        if (totalDamage == 0) {
+            totalDamage += 1;
+        }
+        Combat.setResult(getType()+" took " + totalDamage + " damage!");
         setHP(-totalDamage);
     }
 
@@ -88,7 +92,8 @@ public class Alien {
 
     private void setHP(int HP) {
         // If HP value is negative and takes HP below 0, just set to MIN_HP
-        if (HP <= MIN_HP) {
+        int newHP = this.HP + HP;
+        if (MIN_HP >= newHP) {
             this.HP = MIN_HP;
             setAlive(); //Will change alive to false if at or below min
         }
@@ -132,7 +137,7 @@ public class Alien {
     }
 
     public void setAlive() {
-        if (HP > MIN_HP) {
+        if (this.HP > MIN_HP) {
             this.isAlive = true;
         } else {
             this.isAlive = false;

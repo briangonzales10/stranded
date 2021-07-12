@@ -1,5 +1,6 @@
 package com.game.player;
 
+import com.game.conditions.Combat;
 import com.game.enemies.Alien;
 import com.game.items.Item;
 import com.game.textparser.UserInput;
@@ -46,6 +47,19 @@ public class Player {
         return inventoryString;
     }
 
+    public static StringBuilder viewInventory(String type) {
+        StringBuilder inventoryString = new StringBuilder();
+
+        for(Item item: inventory){
+            if (item.getType().equals(type)) {
+                inventoryString.append(item.getItemName()).append(" ");
+            }
+
+        }
+        return inventoryString;
+
+    }
+
     public static int keyItemCheck(){
         int keyItemsInInventory = 0;
         for(Item item: inventory){
@@ -76,14 +90,14 @@ public class Player {
         //Attack alien method!
         Random rand = new Random();
         int randDamage = 0;
-        int atkPower = 0;
+        int atkPower;
 
         if (weapon == null ) {
             atkPower = 2; //Hand combat power
-            randDamage = rand.nextInt(atkPower);
+            randDamage = rand.nextInt(atkPower)+1;
 
             alien.takeDamage(randDamage);
-            System.out.println("You have no weapons so you must use your fist!");
+            Combat.setResult("Used your fists!");
         }
         else {
 
@@ -95,7 +109,7 @@ public class Player {
                     randDamage = rand.nextInt(atkPower)+1;
                 }
 
-                System.out.println("You used your " + weapon.getItemName() + "!");
+                //Combat.setResult("You used your " + weapon.getItemName() + "!");
                 alien.takeDamage(randDamage);
             }
         }

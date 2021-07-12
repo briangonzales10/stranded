@@ -65,7 +65,7 @@
 	{
 		"locationId": 8,
 		"name": "Alien Compound",
-		"description": "Oh no, the aliens spot you and start to attack!",
+		"description": "Remote alien compound.  That was a close one!",
 		"north": "Mountains",
 		"east": null,
 		"south": null,
@@ -127,12 +127,12 @@
 	},
 	{
 		"locationId": 15,
-		"name": "Alien Compound",
+		"name": "Alien Compound 2",
 		"description": "The smell...the horrible smell",
 		"north": null,
 		"east": "Landing site",
 		"south": "Lava Tube",
-		"west": "null"
+		"west": null
 	},
 	{
 		"locationId": 16,
