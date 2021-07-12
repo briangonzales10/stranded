@@ -1,11 +1,7 @@
 package com.game.textparser;
 
 
-import com.game.items.Item;
 import com.game.player.Player;
-import com.game.world.gameWorld;
-import com.game.world.location;
-import jdk.jshell.Snippet;
 
 import java.util.Scanner;
 

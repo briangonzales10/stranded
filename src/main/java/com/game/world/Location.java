@@ -3,7 +3,7 @@ package com.game.world;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class location {
+public class Location {
 // Instance Fields for locations on planet
     private int locationId;
     private String name;
@@ -17,11 +17,11 @@ public class location {
     private String west;
 
     //Default constructor for Jackson JSON objects
-    public location() {
+    public Location() {
         super();
     }
     //Constructor for building location
-    public location(int Id,String name, String description, String north, String east, String south, String west) {
+    public Location(int Id, String name, String description, String north, String east, String south, String west) {
         setLocationId(Id);
         setName(name);
         setDescription(description);

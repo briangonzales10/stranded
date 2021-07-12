@@ -2,40 +2,53 @@ package com.game;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.game.enemies.Alien;
 import com.game.items.Item;
 import com.game.player.Player;
 import com.game.startmenu.StartMenu;
-import com.game.world.gameWorld;
-import com.game.world.location;
+import com.game.world.GameWorld;
 import com.game.textparser.UserInput;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Random;
 
-public class game {
+public class Game {
     public static void main(String[] args) throws IOException {
         //Alien testing
         System.out.println("******ALIENS********");
-        Random rand = new Random();
+        ArrayList<Alien> aliens = new ArrayList<>();
 
-        int count = 11;
-        for (int i = 0; i < count; i++) {
-            System.out.println(i);
+
+        String alienJSON = new ObjectMapper().writeValueAsString(aliens);
+        System.out.println(alienJSON);
+
+        byte[] alienData = Files.readAllBytes(Paths.get("src/main/resources/enemies.json"));
+        ObjectMapper objectMapper = new ObjectMapper();
+        Alien[] alien = objectMapper.readValue(alienData, Alien[].class);
+
+        Alien myAlien = null;
+        System.out.println(Arrays.toString(alien));
+        GameWorld.setCurrentLocation("Alien Compound");
+        for (Alien enemy:alien) {
+            if (enemy.getLocation().equals(GameWorld.getCurrentLocation())) {
+                myAlien = enemy;
+            }
         }
-        System.out.println(rand.nextInt(10));
+        System.out.println(myAlien);
+
         System.out.println("******ALIENS********");
 
 
 
 
-        gameWorld game = new gameWorld();
+        GameWorld game = new GameWorld();
 
         //Testing for items
-        HashMap<String, ArrayList<Item>> gameItems = gameWorld.getGameItems();
+        HashMap<String, ArrayList<Item>> gameItems = GameWorld.getGameItems();
         String itemJSON = new ObjectMapper().writeValueAsString(gameItems);
         System.out.println("******ITEMS********");
         //System.out.println(itemJSON);

@@ -1,0 +1,18 @@
+﻿[
+	{
+		"attackDamage": 3,
+		"defense": 2,
+		"type": "Alien soldier",
+		"location": "Alien Compound",
+		"alive": true,
+		"hp": 20
+	},
+	{
+		"attackDamage": 6,
+		"defense": 4,
+		"type": "Alien boss",
+		"location": "Alien Compound 2",
+		"alive": true,
+		"hp": 45
+	}
+]

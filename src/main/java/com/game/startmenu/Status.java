@@ -4,20 +4,21 @@ package com.game.startmenu;
 import com.game.conditions.Combat;
 import com.game.items.Item;
 import com.game.player.Player;
-import com.game.world.gameWorld;
-import com.game.world.location;
+import com.game.world.GameWorld;
+import com.game.world.Location;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class status {
+public class Status {
 
     private String action = "None";
     private String noun = "";
     private String result = "";
 
     // Constructor
-    public status() {
+    public Status() {
 
     }
 
@@ -27,20 +28,20 @@ public class status {
     //command[0] is action, command[1] is direction/item/etc.
 
         //Initialize variables for action logic
-        String currentLoc = gameWorld.getCurrentLocation();
-        HashMap<String, ArrayList<Item>> inventoryMap = gameWorld.getGameItems();
+        String currentLoc = GameWorld.getCurrentLocation();
+        HashMap<String, ArrayList<Item>> inventoryMap = GameWorld.getGameItems();
         ArrayList<Item> inventoryArray = inventoryMap.get(currentLoc);
-        HashMap<String, ArrayList<Item>> hiddenItemsMap = gameWorld.getHiddenItems();
+        HashMap<String, ArrayList<Item>> hiddenItemsMap = GameWorld.getHiddenItems();
         ArrayList<Item> hiddenItemsArray = hiddenItemsMap.get(currentLoc);
         ArrayList<Item> playerItems = Player.getInventory();
 
         if (currentLoc == null || currentLoc.equals("")) {
-            currentLoc = gameWorld.getPreviousLocation();
+            currentLoc = GameWorld.getPreviousLocation();
         }
 
         if (command[0].equals("go")) {
             //Execute move to change current room to command[1]
-           String nextLoc = gameWorld.getNextLocation(currentLoc,command[1]); //checks what location is n/e/s/w of current location
+           String nextLoc = GameWorld.getNextLocation(currentLoc,command[1]); //checks what location is n/e/s/w of current location
            if (nextLoc == null || nextLoc.equals("")) {
                setResult("You can't go that way");
            }
@@ -140,24 +141,24 @@ public class status {
         setNoun(command[1]);
     }
 
-    public void display() throws InterruptedException{
+    public void display() throws InterruptedException, IOException {
         clearConsole();
-        String currentLoc = gameWorld.getCurrentLocation();
+        String currentLoc = GameWorld.getCurrentLocation();
         if (currentLoc == null || currentLoc.equals("")) {
-            currentLoc = gameWorld.getPreviousLocation();
+            currentLoc = GameWorld.getPreviousLocation();
         }
         Combat combat = null;
         if (currentLoc.contains("Alien Compound")) {
             combat = new Combat();
         }
-        location currentLocData = gameWorld.getPlanet1().get(currentLoc);
+        Location currentLocData = GameWorld.getPlanet1().get(currentLoc);
 
         System.out.println("===================================================");
         System.out.println("Location: " + currentLocData.getName());
         System.out.println("===================================================");
         System.out.println("Description: " +  currentLocData.getDescription());
         System.out.println("\n");
-        System.out.println("Items you see: " + gameWorld.getItemsByLocation(currentLoc));
+        System.out.println("Items you see: " + GameWorld.getItemsByLocation(currentLoc));
         System.out.println("===================================================");
         System.out.println("Name: " + Player.getName() + " | HP: " + Player.getHP() + " / " + Player.getMaxHp());
         System.out.println("Current Inventory: " + Player.viewInventory());
