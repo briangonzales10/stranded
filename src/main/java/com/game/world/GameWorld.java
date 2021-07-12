@@ -11,16 +11,16 @@ import java.util.HashMap;
 
 
 
-public class gameWorld {
+public class GameWorld {
     private static String currentLocation = "Crash Site";
     private static String previousLocation = "Crash Site";
 
     //Fields for Game Assets
-    private static HashMap<String, location> planet1;
+    private static HashMap<String, Location> planet1;
     private static HashMap<String, ArrayList<Item>> gameItems;
     private static HashMap<String, ArrayList<Item>> hiddenItems;
 
-    public gameWorld() throws IOException {
+    public GameWorld() throws IOException {
         createGameAssets();
     }
 
@@ -29,16 +29,14 @@ public class gameWorld {
 
     private void createGameAssets() throws IOException{
         //Load our locations from planet1.json file into array of location objects
-        //File directory = new File("./");
-        //System.out.println(directory.getAbsolutePath());
 
         byte[] locationData = Files.readAllBytes(Paths.get("src/main/resources/planet1.json"));
         ObjectMapper objectMapper = new ObjectMapper();
-        location[] location = objectMapper.readValue(locationData, location[].class);
+        Location[] location = objectMapper.readValue(locationData, Location[].class);
 
         //load our planet Hashmap with location objects
         planet1 = new HashMap<>();
-        for (location loc: location ) {
+        for (Location loc: location ) {
             planet1.put(loc.getName(), loc);
         }
         //Create Array of Items from JSON
@@ -50,7 +48,7 @@ public class gameWorld {
         gameItems = new HashMap<>(numberOfLocations);
 
         //Create Array List for each location
-        for (location loc: location) {
+        for (Location loc: location) {
             gameItems.put(loc.getName(),new ArrayList<Item>());
         }
 
@@ -66,7 +64,7 @@ public class gameWorld {
         Item[] hiddenItemsArray = objectMapper.readValue(hiddenItemData,Item[].class);
 
         hiddenItems = new HashMap<>(numberOfLocations);
-        for (location loc: location) {
+        for (Location loc: location) {
             hiddenItems.put(loc.getName(),new ArrayList<Item>());
         }
         for (Item hiddenitem : hiddenItemsArray) {
@@ -130,7 +128,7 @@ public class gameWorld {
     }
 
     //Getters & Setters for planets & items
-    public static HashMap<String, location> getPlanet1() {
+    public static HashMap<String, Location> getPlanet1() {
         return planet1;
     }
 
@@ -158,7 +156,7 @@ public class gameWorld {
     }
 
     private static void setPreviousLocation(String previousLocation) {
-        gameWorld.previousLocation = previousLocation;
+        GameWorld.previousLocation = previousLocation;
     }
 
     @Override

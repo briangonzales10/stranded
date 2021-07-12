@@ -78,7 +78,7 @@ public class Alien {
 
     public void takeDamage(int AttackStr) {
         int totalDamage = AttackStr/defense;
-        if (totalDamage == 0) {
+        if (totalDamage == 0) { //Give at least 1 damage per turn with fists...
             totalDamage += 1;
         }
         Combat.setResult(getType()+" took " + totalDamage + " damage!");
@@ -142,5 +142,18 @@ public class Alien {
         } else {
             this.isAlive = false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Alien{" +
+                "HP=" + HP +
+                ", attackDamage=" + attackDamage +
+                ", defense=" + defense +
+                ", type='" + type + '\'' +
+                ", location='" + location + '\'' +
+                ", isAlive=" + isAlive +
+                ", MIN_HP=" + MIN_HP +
+                '}';
     }
 }

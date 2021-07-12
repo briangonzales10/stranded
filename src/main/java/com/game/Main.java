@@ -5,19 +5,19 @@ import com.game.conditions.Travel;
 import com.game.conditions.Win;
 import com.game.player.Player;
 import com.game.startmenu.StartMenu;
-import com.game.startmenu.status;
+import com.game.startmenu.Status;
 import com.game.textparser.UserInput;
-import com.game.world.gameWorld;
-import com.game.world.location;
+import com.game.world.GameWorld;
+import com.game.world.Location;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-public class main {
+public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         boolean isRunning = true;
         StartMenu start = new StartMenu();
-        status status = new status();
+        Status status = new Status();
 
 
 
@@ -27,8 +27,8 @@ public class main {
         while (isRunning){
 
             while (player == null) {
-                gameWorld ourGame = new gameWorld();
-                HashMap<String, location> planet1 = ourGame.getPlanet1();
+                GameWorld ourGame = new GameWorld();
+                HashMap<String, Location> planet1 = ourGame.getPlanet1();
                 player = new Player();
                 Run = true;
 
@@ -38,12 +38,12 @@ public class main {
 
                 while (!move) {
 
-                    if (gameWorld.getCurrentLocation() != null){
+                    if (GameWorld.getCurrentLocation() != null){
 
-                        if(Player.keyItemCheck() == 2 && gameWorld.getCurrentLocation().equals("Crash Site")){
+                        if(Player.keyItemCheck() == 2 && GameWorld.getCurrentLocation().equals("Crash Site")){
                             Travel.goToAnotherPlanet();
                             Travel.lowFuelWarning();
-                            gameWorld.setCurrentLocation("Landing Site");
+                            GameWorld.setCurrentLocation("Landing Site");
                         }
 
                         if(Player.getHP() == 0){
@@ -51,8 +51,8 @@ public class main {
                             if(UserInput.playAgain() == true){
                                 Run = false;
                                 Player.clearInventory();
-                                gameWorld.setCurrentLocation("Crash Site");
-                                status = new status();
+                                GameWorld.setCurrentLocation("Crash Site");
+                                status = new Status();
                                 player = null;
                                 break;
                             } else {
@@ -63,7 +63,7 @@ public class main {
 
                         }
 
-                        if (Player.keyItemCheck() == 3 && gameWorld.getCurrentLocation().equals("Landing Site")) {
+                        if (Player.keyItemCheck() == 3 && GameWorld.getCurrentLocation().equals("Landing Site")) {
                             Win.youWin();
                             Run = false;
                             isRunning = false;

@@ -1,10 +1,16 @@
 package com.game.conditions;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.enemies.Alien;
 import com.game.items.Item;
 import com.game.player.Player;
-import com.game.startmenu.status;
+import com.game.startmenu.Status;
 import com.game.textparser.UserInput;
+import com.game.world.GameWorld;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 public class Combat {
@@ -17,20 +23,31 @@ public class Combat {
 
 
     //default constructor
-    public Combat() throws InterruptedException {
+    public Combat() throws InterruptedException, IOException {
         Alien soldier = createAlien();
 
-        status.clearConsole();
+        Status.clearConsole();
         startCombat(soldier);
 
         //soldier.Attack();//Might modify to take in Player class
     }
 
     //Combat methods
-    private Alien createAlien() {
-        Alien soldier = new Alien(20, 3, 2, "Alien soldier", "Alien Compound");
+    private Alien createAlien() throws IOException {
+        //Return alien from JSON file.
+        byte[] alienData = Files.readAllBytes(Paths.get("src/main/resources/enemies.json"));
+        ObjectMapper objectMapper = new ObjectMapper();
+        Alien[] alien = objectMapper.readValue(alienData, Alien[].class);
 
-        return soldier;
+        Alien myAlien = null;
+
+        for (Alien enemy:alien) {
+            if (enemy.getLocation().equals(GameWorld.getCurrentLocation())) {
+                myAlien = enemy;
+            }
+        }
+
+        return myAlien;
     }
 
     private void startCombat(Alien soldier) throws InterruptedException {
@@ -82,7 +99,7 @@ public class Combat {
 
 
     private void fightStatus(Alien soldier) throws InterruptedException {
-        status.clearConsole();
+        Status.clearConsole();
 
         System.out.println("**********ALERT, ALIEN IS ATTACKING YOU*************");
         System.out.println("===================================================");
@@ -100,7 +117,7 @@ public class Combat {
     }
 
     private void winCombat() throws InterruptedException{
-        status.clearConsole();
+        Status.clearConsole();
 
         System.out.println("        _..._" +
                 "      .'     '.      _\n" +
@@ -121,7 +138,7 @@ public class Combat {
                 "COMBAT CLEARED"
         );
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
     }
 
     //Getters & Setters

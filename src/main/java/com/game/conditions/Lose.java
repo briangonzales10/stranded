@@ -1,13 +1,13 @@
 package com.game.conditions;
 
-import com.game.startmenu.status;
+import com.game.startmenu.Status;
 
 public class Lose {
 
     public static void youLose() throws InterruptedException {
         System.out.println("Your feel your heart rate rise uncontrollably...and a sharp pain ensues");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("                         _______________________\n" +
                 "                       //   __..--~~~~--..__    \\\\\n" +
                 "                      ||___/  |  |   |  |   \\ __/ |\n" +
@@ -39,7 +39,7 @@ public class Lose {
                 "   /           //   _|/  /-              .    __ |..~. _____ -.. '  \"\n" +
                 " ..\\==========/'   \\_/ _/  __      ___..     /  \\|\n");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("\n" +
                 " .----------------.  .----------------.  .----------------.  .----------------.   \n" +
                 "| .--------------. || .--------------. || .--------------. || .--------------. |  \n" +
@@ -64,7 +64,7 @@ public class Lose {
                 "| '--------------' || '--------------' || '--------------' || '--------------' |  \n" +
                 " '----------------'  '----------------'  '----------------'  '----------------'   ");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("                                .do-\"\"\"\"\"'-o..                         \n" +
                 "                             .o\"\"            \"\"..                       \n" +
                 "                           ,,''                 ``b.                   \n" +
@@ -123,7 +123,7 @@ public class Lose {
                 "             d: ,d8P'    ,8P\"\"\".                      88   :P        8 \n" +
                 "             8 ,88P'     d'                           88   ::        8 \n");
         Thread.sleep(4000);
-        status.clearConsole();
+        Status.clearConsole();
 
     }
 }
