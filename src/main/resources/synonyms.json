@@ -17,7 +17,8 @@
     "approach",
     "abscond",
     "vamoose",
-    "wend"
+    "wend",
+    "go"
   ],
   "grab": [
     "get",
@@ -38,7 +39,8 @@
     "land",
     "nab",
     "nail",
-    "pluck"
+    "pluck",
+    "grab"
   ],
   "use": [
     "accept",
@@ -67,7 +69,8 @@
     "ply",
     "regulate",
     "relate",
-    "waste"
+    "waste",
+    "use"
   ],
   "search": [
     "check",
@@ -99,7 +102,8 @@
     "rake",
     "root",
     "rummage",
-    "study"
+    "study",
+    "search"
   ],
   "drop": [
     "abandon",
@@ -131,6 +135,7 @@
     "plump",
     "relinquish",
     "topple",
-    "unload"
+    "unload",
+    "drop"
   ]
 }
