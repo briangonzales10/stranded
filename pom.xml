@@ -89,7 +89,7 @@
 <!--                        <manifest>-->
 
 <!--                            <mainClass>-->
-<!--                                com.game.main-->
+<!--                                com.game.Main-->
 <!--                            </mainClass>-->
 <!--                        </manifest>-->
 
@@ -108,7 +108,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>com.game.main</mainClass>
+                                    <mainClass>com.game.Main</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

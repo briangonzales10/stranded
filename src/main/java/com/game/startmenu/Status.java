@@ -1,21 +1,24 @@
 package com.game.startmenu;
 
+
+import com.game.conditions.Combat;
 import com.game.items.Item;
 import com.game.player.Player;
-import com.game.world.gameWorld;
-import com.game.world.location;
+import com.game.world.GameWorld;
+import com.game.world.Location;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class status {
+public class Status {
 
-    String action = "None";
-    String noun = "";
-    String result = "";
+    private String action = "None";
+    private String noun = "";
+    private String result = "";
 
     // Constructor
-    public status() {
+    public Status() {
 
     }
 
@@ -25,24 +28,27 @@ public class status {
     //command[0] is action, command[1] is direction/item/etc.
 
         //Initialize variables for action logic
-        String currentLoc = gameWorld.getCurrentLocation();
-        HashMap<String, ArrayList<Item>> inventoryMap = gameWorld.getGameItems();
+        String currentLoc = GameWorld.getCurrentLocation();
+        HashMap<String, ArrayList<Item>> inventoryMap = GameWorld.getGameItems();
         ArrayList<Item> inventoryArray = inventoryMap.get(currentLoc);
-        HashMap<String, ArrayList<Item>> hiddenItemsMap = gameWorld.getHiddenItems();
+        HashMap<String, ArrayList<Item>> hiddenItemsMap = GameWorld.getHiddenItems();
         ArrayList<Item> hiddenItemsArray = hiddenItemsMap.get(currentLoc);
         ArrayList<Item> playerItems = Player.getInventory();
 
         if (currentLoc == null || currentLoc.equals("")) {
-            currentLoc = gameWorld.getPreviousLocation();
+            currentLoc = GameWorld.getPreviousLocation();
         }
 
         if (command[0].equals("go")) {
             //Execute move to change current room to command[1]
-           String nextLoc = gameWorld.getNextLocation(currentLoc,command[1]); //checks what location is n/e/s/w of current location
+           String nextLoc = GameWorld.getNextLocation(currentLoc,command[1]); //checks what location is n/e/s/w of current location
            if (nextLoc == null || nextLoc.equals("")) {
                setResult("You can't go that way");
            }
-            gameWorld.setCurrentLocation(nextLoc); // Updates current location for player
+
+            // new method for moving player
+            Player.move(nextLoc);
+            setResult("Moving is tiring and HP draining on this planet..");
         }
 
         if (command[0].equals("grab")) {
@@ -74,6 +80,7 @@ public class status {
                 if (hiddenItem != null) {
                     setResult(hiddenItem.getItemName() + " uncovered!");
                     inventoryArray.add(hiddenItem);
+                    break;
                 }
                 else {
                     setResult("No hidden items found.");
@@ -90,6 +97,7 @@ public class status {
                     dropItem = item;
                     //item is added to current location inventory
                     inventoryArray.add(item);
+                    break;
                 }
             }
             if (dropItem != null) {
@@ -99,24 +107,26 @@ public class status {
 
         }
 
-        if (command[0].equals("use")) {
+        if (command[0].equals("use") || command[0].equals("eat")) {
             //Check if command[1] is in player inventory
             Item usedItem = null;
             for (Item item : playerItems){
                 if (item.getItemName().equals(command[1])) { //If item from player's inventory matches use item
                     usedItem = item;
+                    break;
                 }
             }
             if (usedItem == null) {
                 setResult("You don't have " + command[1] +" in your inventory!");
             }
 
-            //check if food item, then setHP
+            //check if food item exists, then eat
             if (usedItem != null) {
 
                 if (usedItem.getType().equals("food")) {
-                    Player.setHP(usedItem.getHpValue());
-                    playerItems.remove(usedItem); // remove after using food
+
+                    Player.eat(usedItem);
+
                     setResult(command[1] + " used!");
                 }
                 else if (usedItem.getType().equals("weapon")) {
@@ -134,25 +144,29 @@ public class status {
         setNoun(command[1]);
     }
 
-    public void display() throws InterruptedException{
+    public void display() throws InterruptedException, IOException {
         clearConsole();
-        String currentLoc = gameWorld.getCurrentLocation();
+        String currentLoc = GameWorld.getCurrentLocation();
         if (currentLoc == null || currentLoc.equals("")) {
-            currentLoc = gameWorld.getPreviousLocation();
+            currentLoc = GameWorld.getPreviousLocation();
         }
-        location currentLocData = gameWorld.getPlanet1().get(currentLoc);
+        Combat combat = null;
+        if (currentLoc.contains("Alien Compound")) {
+            combat = new Combat();
+        }
+        Location currentLocData = GameWorld.getPlanet1().get(currentLoc);
 
         System.out.println("===================================================");
         System.out.println("Location: " + currentLocData.getName());
         System.out.println("===================================================");
-        System.out.println("Description: " + currentLocData.getDescription());
+        System.out.println("Description: " +  currentLocData.getDescription());
         System.out.println("\n");
-        System.out.println("Items you see: " + gameWorld.getItemsByLocation(currentLoc));
+        System.out.println("Items you see: " + GameWorld.getItemsByLocation(currentLoc));
         System.out.println("===================================================");
         System.out.println("Name: " + Player.getName() + " | HP: " + Player.getHP() + " / " + Player.getMaxHp());
         System.out.println("Current Inventory: " + Player.viewInventory());
         System.out.println("---------------------------------------------------");
-        System.out.println("Last action taken: " + action + " "+ noun);
+        System.out.println("Last action taken: " + getAction() + " "+ getNoun());
         System.out.println(getResult()); //Display action results
         setResult(""); //Reset action results for next action
 

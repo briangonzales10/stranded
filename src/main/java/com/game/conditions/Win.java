@@ -1,22 +1,22 @@
 package com.game.conditions;
 
-import com.game.startmenu.status;
+import com.game.startmenu.Status;
 
 public class Win {
 
     public static void youWin() throws InterruptedException {
         System.out.println("Now with enough fuel to make it back home you can begin your journey home ");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("Refueling...");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("Refueling.........");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("Hyperspeed Liftoff...............");
         Thread.sleep(3000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("             _-o#&&*''''?d:>b\\_\n" +
                 "          _o/\"`''  '',, dMF9MMMMMHo_\n" +
                 "       .o&#'        `\"MbHMMMMMMMMMMMHo.\n" +

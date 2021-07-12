@@ -1,12 +1,16 @@
 package com.game.textparser;
 
 
-import com.game.items.Item;
 import com.game.player.Player;
-import com.game.world.gameWorld;
-import com.game.world.location;
 
+import java.util.Map;
 import java.util.Scanner;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserInput {
     private static String astronautName = "";
@@ -32,8 +36,13 @@ public class UserInput {
         return astronautName;
     }
 
-    public static String[] action(){
+    public static String[] action() throws IOException {
         /*Takes user input and it processes what type of action you are trying to take */
+        byte[] mapData = Files.readAllBytes(Paths.get("src/main/resources/synonyms.json"));
+        Map<String,ArrayList<String>> myMap = new HashMap<String, ArrayList<String>>();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        myMap = objectMapper.readValue(mapData, HashMap.class);
 
 
         System.out.println("Perform an action: ");
@@ -45,15 +54,20 @@ public class UserInput {
             return invalidArray;
         }
 
-        if(inputStringArray[0].equals("go")){
+        if(myMap.get("go").contains(inputStringArray[0])){
+            inputStringArray[0] = "go";
             inputStringArray[1] = move(inputStringArray);
-        } else if (inputStringArray[0].equals("grab") || inputStringArray[0].equals("get")){
+        } else if (myMap.get("grab").contains(inputStringArray[0])){
+            inputStringArray[0] = "grab";
             inputStringArray[1] = grabItem(inputStringArray);
-        }else if (inputStringArray[0].equals("use")){
+        }else if (myMap.get("use").contains(inputStringArray[0])){
+            inputStringArray[0] = "use";
             inputStringArray[1] = useItem(inputStringArray);
-        } else if (inputStringArray[0].equals("search")) {
+        } else if (myMap.get("search").contains(inputStringArray[0])) {
+            inputStringArray[0] = "search";
             inputStringArray[1] = search(inputStringArray);
-        } else if (inputStringArray[0].equals("drop")){
+        } else if (myMap.get("drop").contains(inputStringArray[0])){
+            inputStringArray[0] = "drop";
             inputStringArray[1] = dropItem(inputStringArray);
         } else {
             return invalidArray;
@@ -109,6 +123,37 @@ public class UserInput {
             itemDropped = "";
         }
         return itemDropped;
+    }
+
+    public static boolean playAgain(){
+        boolean askForReplay = true;
+        int userNum = 0;
+        while (askForReplay){
+            System.out.println("Would you like to play Stranded again?");
+            System.out.println("Please enter the number for your choice");
+            System.out.println("1) Yes\n2) No");
+
+            try {
+                String userString = input.nextLine();
+                userNum = Integer.parseInt(userString);
+
+                if(userNum > 0 && userNum < 3){
+                    askForReplay = false;
+                    break;
+                } else {
+                    System.out.println("Invalid Choice");
+                    System.out.println("====================");
+                }
+
+            } catch (Exception e){
+                System.out.println("Invalid Choice");
+                System.out.println("====================");
+            }
+        }
+
+        return userNum == 1;
+
+
     }
 
 
