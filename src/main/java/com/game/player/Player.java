@@ -70,6 +70,10 @@ public class Player {
         return keyItemsInInventory;
     }
 
+    public static void clearInventory() {
+        inventory = new ArrayList<Item>();
+    }
+
     public static void eat(Item foodItem) {
         //add HP value from food type item and remove from inventory
         setHP(foodItem.getHpValue());

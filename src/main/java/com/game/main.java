@@ -17,22 +17,23 @@ public class main {
     public static void main(String[] args) throws IOException, InterruptedException {
         boolean isRunning = true;
         StartMenu start = new StartMenu();
-        gameWorld ourGame = new gameWorld();
         status status = new status();
 
-        HashMap<String, location> planet1 = ourGame.getPlanet1();
+
 
         boolean Run = true;
         Player player = null;
-        
+
         while (isRunning){
 
             while (player == null) {
-                 player = new Player();
-                 Run = true;
+                gameWorld ourGame = new gameWorld();
+                HashMap<String, location> planet1 = ourGame.getPlanet1();
+                player = new Player();
+                Run = true;
 
             }
-           while (Run) {
+            while (Run) {
                 boolean move = false;
 
                 while (!move) {
@@ -49,6 +50,9 @@ public class main {
                             Lose.youLose();
                             if(UserInput.playAgain() == true){
                                 Run = false;
+                                Player.clearInventory();
+                                gameWorld.setCurrentLocation("Crash Site");
+                                status = new status();
                                 player = null;
                                 break;
                             } else {
@@ -73,11 +77,10 @@ public class main {
                     //send action to a class to update location/inventory/status etc.
                     status.action(action);
                     move = true;
-                    }
-
                 }
 
             }
+
         }
     }
-
+}
