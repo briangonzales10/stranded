@@ -43,7 +43,7 @@ public class Combat {
         for (Alien enemy:alien) {
             if (enemy.getLocation().equals(GameWorld.getCurrentLocation())) {
                 myAlien = enemy;
-                break;
+                //break;
             }
         }
 
@@ -51,7 +51,7 @@ public class Combat {
     }
 
     private void startCombat(Alien soldier) throws InterruptedException, IOException {
-        if (soldier != null ) {
+        //if (soldier != null ) {
 
             while (soldier.isAlive() && (Player.getHP() > Player.getMinHp())) {
                 //Verify action
@@ -79,7 +79,7 @@ public class Combat {
                         //Combat
                         Player.attack(soldier, weapon);
                         soldier.Attack();
-                        soldier.setAlive(); //Updates Alive Status
+                        soldier.checkAlive(); //Updates Alive Status
                         if (!soldier.isAlive()) {
                             winCombat();
                         }
@@ -96,7 +96,7 @@ public class Combat {
 
 
             }
-        }
+        //}
     }
 
 
@@ -105,7 +105,7 @@ public class Combat {
 
         System.out.println("**********ALERT, ALIEN IS ATTACKING YOU*************");
         System.out.println("===================================================");
-        System.out.println("Enemy: " + soldier.getType() + " HP: " + soldier.getHP());
+        System.out.println("Enemy: " + soldier.getType() + " HP: " + soldier.getHp());
         System.out.println("===================================================");
         System.out.println("Name: " + Player.getName() + " | HP: " + Player.getHP() + " / " + Player.getMaxHp());
         System.out.println("Weapons available: " + Player.viewInventory("weapon"));
