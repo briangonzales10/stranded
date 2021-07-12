@@ -4,7 +4,7 @@ import com.game.conditions.Combat;
 import com.game.enemies.Alien;
 import com.game.items.Item;
 import com.game.textparser.UserInput;
-import com.game.world.gameWorld;
+import com.game.world.GameWorld;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -86,7 +86,7 @@ public class Player {
         setMovePenalty();  //readjust move penalty before moving
 
         setHP(getMovePenalty());
-        gameWorld.setCurrentLocation(nextLoc);
+        GameWorld.setCurrentLocation(nextLoc);
     }
 
     //Fight Methods

@@ -1,7 +1,7 @@
 package com.game.items;
 
 public class Item {
-    private int Id;
+    private int id;
     private int hpValue;
     private String type;
     private String itemName;
@@ -16,22 +16,28 @@ public class Item {
     }
 
     public Item(int id, int hpValue, String type, String itemName, String location, String description, boolean keyItem) {
-        Id = id;
-        this.hpValue = hpValue;
-        this.type = type;
-        this.itemName = itemName;
-        this.location = location;
-        this.description = description;
-        this.keyItem = keyItem;
+
+        setId(id);
+        setHpValue(hpValue);
+        setType(type);
+        setItemName(itemName);
+        setLocation(location);
+        setDescription(description);
+        setKeyItem(keyItem);
     }
 
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        if (id > 0 ) {
+            this.id = id;
+        } else {
+            System.out.println("ID must be positive");
+            this.id = 0;
+        }
     }
 
     public int getHpValue() {
@@ -47,7 +53,12 @@ public class Item {
     }
 
     public void setType(String type) {
-        this.type = type;
+        if (type.equals("food") || type.equals("weapon") || type.equals("other") || type.equals("tool")) {
+            this.type = type;
+        }
+        else {
+            this.type = "other";
+        }
     }
 
     public String getItemName() {
@@ -85,7 +96,7 @@ public class Item {
     @Override
     public String toString() {
         return "Item{" +
-                "Id=" + Id +
+                "Id=" + id +
                 ", hpValue=" + hpValue +
                 ", type='" + type + '\'' +
                 ", itemName='" + itemName + '\'' +

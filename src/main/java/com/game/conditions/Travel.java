@@ -1,19 +1,19 @@
 package com.game.conditions;
 
-import com.game.startmenu.status;
+import com.game.startmenu.Status;
 
 public class Travel {
 
     public static void goToAnotherPlanet() throws InterruptedException {
         System.out.println("Hmmmm....I think I have enough supplies to fix the craft and now");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("Fixing spacecraft...");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("Making loud noises.........");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("\n" +
                 "  ____      _    _                          _           _            \n" +
                 " |___ \\    | |  | |                        | |         | |           \n" +
@@ -24,7 +24,7 @@ public class Travel {
                 "                                                                     \n" +
                 "                                                                     \n");
         Thread.sleep(3000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("\n" +
                 "       !\n" +
                 "       ^\n" +
@@ -56,7 +56,7 @@ public class Travel {
                 "       .\n" +
                 "       .                    ");
         Thread.sleep(3000);
-        status.clearConsole();
+        Status.clearConsole();
 
     }
 
@@ -86,10 +86,10 @@ public class Travel {
                 "                              \n" +
                 "                              \n");
         Thread.sleep(1000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("EMERGENCY LANDING INITIATED");
         Thread.sleep(1000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("\n" +
                 " __          __     _____  _   _ _____ _   _  _____ \n" +
                 " \\ \\        / /\\   |  __ \\| \\ | |_   _| \\ | |/ ____|\n" +
@@ -115,10 +115,10 @@ public class Travel {
                 "                              \n" +
                 "                              \n");
         Thread.sleep(1000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("EMERGENCY LANDING INITIATED");
         Thread.sleep(1000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("\n" +
                 " __          __     _____  _   _ _____ _   _  _____ \n" +
                 " \\ \\        / /\\   |  __ \\| \\ | |_   _| \\ | |/ ____|\n" +
@@ -144,10 +144,10 @@ public class Travel {
                 "                              \n" +
                 "                              \n");
         Thread.sleep(1000);
-        status.clearConsole();
+        Status.clearConsole();
         System.out.println("EMERGENCY LANDING SUCCESSFUL");
         Thread.sleep(2000);
-        status.clearConsole();
+        Status.clearConsole();
     }
 
 }
