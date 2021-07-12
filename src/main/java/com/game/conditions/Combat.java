@@ -50,7 +50,7 @@ public class Combat {
         return myAlien;
     }
 
-    private void startCombat(Alien soldier) throws InterruptedException {
+    private void startCombat(Alien soldier) throws InterruptedException, IOException {
         if (soldier != null ) {
 
             while (soldier.isAlive() && (Player.getHP() > Player.getMinHp())) {
