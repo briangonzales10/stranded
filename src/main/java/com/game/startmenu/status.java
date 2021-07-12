@@ -1,6 +1,7 @@
 package com.game.startmenu;
 
 
+import com.game.conditions.Combat;
 import com.game.items.Item;
 import com.game.player.Player;
 import com.game.world.gameWorld;
@@ -11,9 +12,9 @@ import java.util.HashMap;
 
 public class status {
 
-    String action = "None";
-    String noun = "";
-    String result = "";
+    private String action = "None";
+    private String noun = "";
+    private String result = "";
 
     // Constructor
     public status() {
@@ -144,6 +145,10 @@ public class status {
         String currentLoc = gameWorld.getCurrentLocation();
         if (currentLoc == null || currentLoc.equals("")) {
             currentLoc = gameWorld.getPreviousLocation();
+        }
+        Combat combat = null;
+        if (currentLoc.contains("Alien Compound")) {
+            combat = new Combat();
         }
         location currentLocData = gameWorld.getPlanet1().get(currentLoc);
 
