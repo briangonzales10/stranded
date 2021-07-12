@@ -80,6 +80,7 @@ public class Status {
                 if (hiddenItem != null) {
                     setResult(hiddenItem.getItemName() + " uncovered!");
                     inventoryArray.add(hiddenItem);
+                    break;
                 }
                 else {
                     setResult("No hidden items found.");
@@ -96,6 +97,7 @@ public class Status {
                     dropItem = item;
                     //item is added to current location inventory
                     inventoryArray.add(item);
+                    break;
                 }
             }
             if (dropItem != null) {
@@ -111,6 +113,7 @@ public class Status {
             for (Item item : playerItems){
                 if (item.getItemName().equals(command[1])) { //If item from player's inventory matches use item
                     usedItem = item;
+                    break;
                 }
             }
             if (usedItem == null) {

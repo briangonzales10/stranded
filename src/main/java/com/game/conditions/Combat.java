@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 
 public class Combat {
 
+    //Static fields for combat results
     private static String result = "";
     private static String enemyResult = "";
 
@@ -25,11 +26,8 @@ public class Combat {
     //default constructor
     public Combat() throws InterruptedException, IOException {
         Alien soldier = createAlien();
-
-        Status.clearConsole();
         startCombat(soldier);
 
-        //soldier.Attack();//Might modify to take in Player class
     }
 
     //Combat methods
@@ -41,9 +39,11 @@ public class Combat {
 
         Alien myAlien = null;
 
+        //Returns the alien based on the "location" field in the enemies.json  Has to match current player location.
         for (Alien enemy:alien) {
             if (enemy.getLocation().equals(GameWorld.getCurrentLocation())) {
                 myAlien = enemy;
+                break;
             }
         }
 
@@ -51,49 +51,51 @@ public class Combat {
     }
 
     private void startCombat(Alien soldier) throws InterruptedException {
+        if (soldier != null ) {
 
-        while (soldier.isAlive() && (Player.getHP() > Player.getMinHp())) {
-            //Verify action
+            while (soldier.isAlive() && (Player.getHP() > Player.getMinHp())) {
+                //Verify action
 
-            boolean doAction = false;
-            while (!doAction) {
+                boolean doAction = false;
+                while (!doAction) {
 
-                fightStatus(soldier);
-                String[] action = UserInput.action();
+                    fightStatus(soldier);
+                    String[] action = UserInput.action();
 
-                //verify a fight command was used somehow...
-                if (action[0].equals("use") || action[0].equals("shoot")) {
+                    //verify a fight command was used somehow...
+                    if (action[0].equals("use") || action[0].equals("shoot")) {
 
-                    //Grab me the right weapon or null from inventory
-                    Item weapon = null;
-                    for (Item item:Player.getInventory()) {
-                        if (item.getType().equals("weapon") && item.getItemName().equals(action[1])) {
-                            weapon = item;
-                        } else {
-                            Combat.setResult("That's not a weapon in your inventory!");
+                        //Grab me the right weapon or null from inventory
+                        Item weapon = null;
+                        for (Item item : Player.getInventory()) {
+                            if (item.getType().equals("weapon") && item.getItemName().equals(action[1])) {
+                                weapon = item;
+                            } else {
+                                Combat.setResult("That's not a weapon in your inventory!");
+                            }
                         }
+
+
+                        //Combat
+                        Player.attack(soldier, weapon);
+                        soldier.Attack();
+                        soldier.setAlive(); //Updates Alive Status
+                        if (!soldier.isAlive()) {
+                            winCombat();
+                        }
+
+                        //Results
+                        setVerb(action[0]);
+                        setNoun(action[1]);
+                        doAction = true;
+                    } else {
+                        Combat.setResult("You can't do that right now, you're in combat!");
                     }
 
-
-                    //Combat
-                    Player.attack(soldier, weapon);
-                    soldier.Attack();
-                    soldier.setAlive();
-                    if (!soldier.isAlive()){
-                        winCombat();
-                    }
-
-                    //Results
-                    setVerb(action[0]);
-                    setNoun(action[1]);
-                    doAction = true;
-                } else {
-                    Combat.setResult("You can't do that right now, you're in combat!");
                 }
 
+
             }
-
-
         }
     }
 
