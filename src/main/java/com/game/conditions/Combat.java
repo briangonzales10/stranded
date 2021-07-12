@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 
 public class Combat {
 
+    //Static fields for combat results
     private static String result = "";
     private static String enemyResult = "";
 
@@ -25,11 +26,8 @@ public class Combat {
     //default constructor
     public Combat() throws InterruptedException, IOException {
         Alien soldier = createAlien();
-
-        Status.clearConsole();
         startCombat(soldier);
 
-        //soldier.Attack();//Might modify to take in Player class
     }
 
     //Combat methods
@@ -41,9 +39,11 @@ public class Combat {
 
         Alien myAlien = null;
 
+        //Returns the alien based on the "location" field in the enemies.json  Has to match current player location.
         for (Alien enemy:alien) {
             if (enemy.getLocation().equals(GameWorld.getCurrentLocation())) {
                 myAlien = enemy;
+                break;
             }
         }
 
@@ -78,7 +78,7 @@ public class Combat {
                     //Combat
                     Player.attack(soldier, weapon);
                     soldier.Attack();
-                    soldier.setAlive();
+                    soldier.setAlive(); //Updates Alive Status
                     if (!soldier.isAlive()){
                         winCombat();
                     }
