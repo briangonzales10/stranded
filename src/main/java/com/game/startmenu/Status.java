@@ -1,6 +1,5 @@
 package com.game.startmenu;
 
-
 import com.game.conditions.Combat;
 import com.game.items.Item;
 import com.game.player.Player;
@@ -43,12 +42,15 @@ public class Status {
             //Execute move to change current room to command[1]
            String nextLoc = GameWorld.getNextLocation(currentLoc,command[1]); //checks what location is n/e/s/w of current location
            if (nextLoc == null || nextLoc.equals("")) {
+               nextLoc = currentLoc;
                setResult("You can't go that way");
            }
 
             // new method for moving player
-            Player.move(nextLoc);
-            setResult("Moving is tiring and HP draining on this planet..");
+            if (!nextLoc.equals(currentLoc)) { //This will prevent move method being called, so HP won't be penalized.
+                Player.move(nextLoc);
+            }
+            //setResult("Moving is tiring and HP draining on this planet..");
         }
 
         if (command[0].equals("grab")) {
@@ -60,7 +62,7 @@ public class Status {
                 if(item.getItemName().equals(command[1])){
                     Player.addItem(item);
                     removeItem = item;
-                    setResult(item.getItemName() + " grabbed!");
+                    setResult(item.getItemName() + " grabbed! " + item.getDescription());
                 } else {
                     count += 1;
                 }
