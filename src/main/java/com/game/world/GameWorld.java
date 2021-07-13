@@ -147,7 +147,10 @@ public class GameWorld {
 
     public static void setCurrentLocation(String newLocation) {
         setPreviousLocation(currentLocation);
-        currentLocation = newLocation;
+        if (currentLocation != null){
+            currentLocation = newLocation;
+        }
+
 
     }
 
@@ -156,7 +159,9 @@ public class GameWorld {
     }
 
     private static void setPreviousLocation(String previousLocation) {
-        GameWorld.previousLocation = previousLocation;
+        if (previousLocation != null) {
+            GameWorld.previousLocation = previousLocation;
+        }
     }
 
     @Override

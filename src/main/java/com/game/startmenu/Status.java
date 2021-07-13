@@ -43,12 +43,13 @@ public class Status {
             //Execute move to change current room to command[1]
            String nextLoc = GameWorld.getNextLocation(currentLoc,command[1]); //checks what location is n/e/s/w of current location
            if (nextLoc == null || nextLoc.equals("")) {
+               nextLoc = currentLoc;
                setResult("You can't go that way");
            }
 
             // new method for moving player
             Player.move(nextLoc);
-            setResult("Moving is tiring and HP draining on this planet..");
+            //setResult("Moving is tiring and HP draining on this planet..");
         }
 
         if (command[0].equals("grab")) {
