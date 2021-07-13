@@ -1,6 +1,5 @@
 package com.game.startmenu;
 
-
 import com.game.conditions.Combat;
 import com.game.items.Item;
 import com.game.player.Player;
@@ -48,7 +47,9 @@ public class Status {
            }
 
             // new method for moving player
-            Player.move(nextLoc);
+            if (!nextLoc.equals(currentLoc)) { //This will prevent move method being called, so HP won't be penalized.
+                Player.move(nextLoc);
+            }
             //setResult("Moving is tiring and HP draining on this planet..");
         }
 
