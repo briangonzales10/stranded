@@ -123,7 +123,7 @@
 		"north": null,
 		"east": "Abandoned Ship",
 		"south": null,
-		"west": "Alien Compound"
+		"west": "Alien Compound 2"
 	},
 	{
 		"locationId": 15,
@@ -138,7 +138,7 @@
 		"locationId": 16,
 		"name": "Lava Tube",
 		"description": "A single pre-historic lava cave",
-		"north": "Alien Compound",
+		"north": "Alien Compound 2",
 		"east": null,
 		"south": null,
 		"west": "Rock Shrine"
