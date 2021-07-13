@@ -25,8 +25,8 @@ public class Player {
     //Player Constructor
     public Player(){
         setName();
-        //setHP(MAX_HP);
-        setHP(85); //for testing
+        setHP(MAX_HP);
+//        setHP(85); //for testing
         setDefense(1);
     }
     //Inventory methods will go below

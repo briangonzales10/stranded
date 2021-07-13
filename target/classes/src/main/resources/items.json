@@ -61,7 +61,16 @@
 		"itemName": "empty fuel can",
 		"location": "Lava Tube",
 		"description": "Great! You can now have more backup fuel. ",
-		"keyItem": true
+		"keyItem": false
+	},
+	{
+		"id": 38,
+		"hpValue": 25,
+		"type": "food",
+		"itemName": "goop",
+		"location": "Alien Compound",
+		"description": "Some strange goop that aliens were eating.  Might be ok to try ",
+		"keyItem": false
 	}
 
 

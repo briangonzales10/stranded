@@ -79,7 +79,7 @@ public class Combat {
                         //Combat
                         Player.attack(soldier, weapon);
                         soldier.Attack();
-                        soldier.setAlive(); //Updates Alive Status
+                        soldier.checkAlive(); //Updates Alive Status
                         if (!soldier.isAlive()) {
                             winCombat();
                         }
@@ -105,10 +105,10 @@ public class Combat {
 
         System.out.println("**********ALERT, ALIEN IS ATTACKING YOU*************");
         System.out.println("===================================================");
-        System.out.println("Enemy: " + soldier.getType() + " HP: " + soldier.getHP());
+        System.out.println("Enemy: " + soldier.getType() + " HP: " + soldier.getHp());
         System.out.println("===================================================");
         System.out.println("Name: " + Player.getName() + " | HP: " + Player.getHP() + " / " + Player.getMaxHp());
-        System.out.println("Weapons available: " + Player.viewInventory("weapon"));
+        System.out.println("Weapons available: fists " + Player.viewInventory("weapon"));
         System.out.println("---------------------------------------------------");
         System.out.println("Last action taken: " + getVerb() + " "+ getNoun());
         System.out.println(">" + getResult());

@@ -11,12 +11,12 @@ import java.util.Random;
 public class Alien {
 
     //Instance Fields
-    private int HP;
+    private int hp;
     private int attackDamage; //Damage strength per enemy 0-10 recommended..
     private int defense; //incoming Attack int divided by this amount
     private String type;
     private String location;
-    private boolean isAlive;
+    private boolean isAlive = true;
 
     //Constants
     private final int MIN_HP = 0;
@@ -27,13 +27,13 @@ public class Alien {
         super();
     }
     //Alien Constructor
-    public Alien(int HP, int attackDamage, int defense, String type, String location) {
-        setHP(HP);
+    public Alien(int HP, int attackDamage, int defense, String type, String location, boolean alive) {
+        setHp(HP);
         setAttackDamage(attackDamage);
         setDefense(defense);
         setType(type);
         setLocation(location);
-        setAlive();
+        setAlive(alive);
     }
 
     //Fight methods
@@ -82,22 +82,22 @@ public class Alien {
             totalDamage += 1;
         }
         Combat.setResult(getType()+" took " + totalDamage + " damage!");
-        setHP(-totalDamage);
+        setHp(-totalDamage);
     }
 
     //Getters & Setters
-    public int getHP() {
-        return HP;
+    public int getHp() {
+        return hp;
     }
 
-    private void setHP(int HP) {
+    private void setHp(int HP) {
         // If HP value is negative and takes HP below 0, just set to MIN_HP
-        int newHP = this.HP + HP;
+        int newHP = this.hp + HP;
         if (MIN_HP >= newHP) {
-            this.HP = MIN_HP;
-            setAlive(); //Will change alive to false if at or below min
+            this.hp = MIN_HP;
+            //setAlive(); //Will change alive to false if at or below min
         }
-        this.HP += HP;
+        this.hp += HP;
     }
 
     public int getAttackDamage() {
@@ -136,8 +136,12 @@ public class Alien {
         return isAlive;
     }
 
-    public void setAlive() {
-        if (this.HP > MIN_HP) {
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+    }
+
+    public void checkAlive() {
+        if (this.hp > MIN_HP) {
             this.isAlive = true;
         } else {
             this.isAlive = false;
@@ -147,7 +151,7 @@ public class Alien {
     @Override
     public String toString() {
         return "Alien{" +
-                "HP=" + HP +
+                "HP=" + hp +
                 ", attackDamage=" + attackDamage +
                 ", defense=" + defense +
                 ", type='" + type + '\'' +

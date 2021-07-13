@@ -60,7 +60,7 @@ public class Status {
                 if(item.getItemName().equals(command[1])){
                     Player.addItem(item);
                     removeItem = item;
-                    setResult(item.getItemName() + " grabbed!");
+                    setResult(item.getItemName() + " grabbed! " + item.getDescription());
                 } else {
                     count += 1;
                 }
