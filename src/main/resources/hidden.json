@@ -21,7 +21,7 @@
 		"id": 22,
 		"hpValue": 10,
 		"type": "food",
-		"itemName": "space ice cream",
+		"itemName": "Creamcicle",
 		"description": "Nice, space dessert. A little treat for you! ",
 		"keyItem": false,
 		"location": "Abandoned Storage Facility"
@@ -37,7 +37,7 @@
 	},
 	{
 		"id": 24,
-		"hpValue": 30,
+		"hpValue": 35,
 		"type": "weapon",
 		"itemName": "flamethrower",
 		"description": "Good find. This can be a great defense when fighting the aliens. ",
@@ -48,8 +48,8 @@
 		"id": 25,
 		"hpValue": 0,
 		"type": "other",
-		"itemName": "skeletal remains",
-		"description": "",
+		"itemName": "skeleton",
+		"description": "Looks like remains from another",
 		"keyItem": false,
 		"location": "Rock Shrine"
 	},
@@ -57,7 +57,7 @@
 		"id": 26,
 		"hpValue": 90,
 		"type": "tool",
-		"itemName": "upgraded spacesuit",
+		"itemName": "spacesuit",
 		"description": "You found full spacesuit. This will give you maximum comfort and maximum protection. ",
 		"keyItem": false,
 		"location": "Dead Volcano"
