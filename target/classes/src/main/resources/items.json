@@ -47,10 +47,10 @@
 	},
 	{
 		"id": 36,
-		"hpValue": 30,
-		"type": "other",
-		"itemName": "campsite",
-		"location": "Far East Crater",
+		"hpValue": 40,
+		"type": "food",
+		"itemName": "canned-food",
+		"location": "Lava Tubes",
 		"description": "Seem like you can spend a night or two here. ",
 		"keyItem": false
 	},
@@ -58,7 +58,7 @@
 		"id": 37,
 		"hpValue": 0,
 		"type": "tool",
-		"itemName": "empty fuel can",
+		"itemName": "empty-fuel-can",
 		"location": "Lava Tube",
 		"description": "Great! You can now have more backup fuel. ",
 		"keyItem": false
@@ -69,6 +69,15 @@
 		"type": "food",
 		"itemName": "goop",
 		"location": "Alien Compound",
+		"description": "Some strange goop that aliens were eating.  Might be ok to try ",
+		"keyItem": false
+	},
+	{
+		"id": 39,
+		"hpValue": 60,
+		"type": "food",
+		"itemName": "food-pack",
+		"location": "Alien Compound 2",
 		"description": "Some strange goop that aliens were eating.  Might be ok to try ",
 		"keyItem": false
 	}
