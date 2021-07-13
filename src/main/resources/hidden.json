@@ -41,7 +41,7 @@
 		"type": "weapon",
 		"itemName": "flamethrower",
 		"description": "Good find. This can be a great defense when fighting the aliens. ",
-		"keyItem": true,
+		"keyItem": false,
 		"location": "South Crater"
 	},
 	{
@@ -59,7 +59,7 @@
 		"type": "tool",
 		"itemName": "upgraded spacesuit",
 		"description": "You found full spacesuit. This will give you maximum comfort and maximum protection. ",
-		"keyItem": true,
+		"keyItem": false,
 		"location": "Dead Volcano"
 	},
 	{
