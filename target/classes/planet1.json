@@ -20,7 +20,7 @@
 	{
 		"locationId": 3,
 		"name": "Crater",
-		"description": "You fall into a large, but shallow crater.  You notice some plastic crates with some Tools sticking out.  Maybe you can fix your ship with it.  You also see some vegetation starting to grow south of the crater",
+		"description": "You fall into a large, but shallow crater.  You notice some plastic crates with some Tools sticking out.  Maybe you can fix your ship with it.  You also see some vegetation starting to grow on one end of the crater",
 		"north": null,
 		"east": "Frozen Tundra",
 		"south": "Jungle",
@@ -29,7 +29,7 @@
 	{
 		"locationId": 4,
 		"name": "Jungle",
-		"description": "All you see is a densely packed jungle with lots of trees everywhere.  On a tree branch you spot a fruit that you can eat.  Hopefully it's not too poisonous. Doesn't seem like there's anywhere else to go but back",
+		"description": "All you see is a densely packed jungle with lots of trees everywhere.  On a tree branch you spot a fruit that you can eat.  Hopefully it's not too poisonous ",
 		"north": "Crater",
 		"east": null,
 		"south": null,
