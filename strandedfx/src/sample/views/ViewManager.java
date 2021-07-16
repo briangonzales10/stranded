@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import sample.models.StrandedButton;
+import sample.models.StrandedSubScene;
 
 public class ViewManager {
 
@@ -32,6 +35,8 @@ public class ViewManager {
     private static final int MENU_BUTTONS_START_Y = 225;
 
     private ArrayList<StrandedButton> buttonList;
+
+    private StrandedSubScene creditSubscene;
 
     private AnchorPane mainPane;
     private Scene mainScene;
@@ -49,6 +54,8 @@ public class ViewManager {
 
         mainStage.setResizable(false);
 
+        createSubscenes();
+
         //creating buttons
         createButton();
 
@@ -56,11 +63,19 @@ public class ViewManager {
         createBackGround();
 
         createLogo();
+
+        StrandedSubScene subscene = new StrandedSubScene();
+        mainPane.getChildren().add(subscene);
     }
 
     //method to get main stage
     public  Stage getMainStage(){
         return mainStage;
+    }
+
+    private void createSubscenes(){
+        creditSubscene = new StrandedSubScene();
+        mainPane.getChildren().add(creditSubscene);
     }
 
 
@@ -123,6 +138,13 @@ public class ViewManager {
 
         StrandedButton credButton = new StrandedButton("CREDITS");
         addMenuButton(credButton);
+
+        credButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                creditSubscene.moveSubScene();
+            }
+        });
     }
 
     private void createExitButton(){
