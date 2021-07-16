@@ -1,9 +1,14 @@
 package sample.views;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -88,6 +93,19 @@ public class ViewManager {
     private void createPlayButton(){
         StrandedButton scoreButton = new StrandedButton("PLAY");
         addMenuButton(scoreButton);
+
+        scoreButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+
+                Stage primaryStage = new Stage();
+
+
+                primaryStage.setTitle("Create Play test");
+                primaryStage.setResizable(false);
+                primaryStage.show();
+            }
+        });
     }
 
     private void createScoreButton(){
