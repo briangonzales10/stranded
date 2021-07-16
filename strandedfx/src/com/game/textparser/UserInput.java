@@ -3,6 +3,8 @@ package com.game.textparser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.player.Player;
+import sample.Controller;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import sample.Controller;
 
 public class UserInput {
     private static String astronautName = "";
@@ -27,6 +30,8 @@ public class UserInput {
 
         System.out.println("Enter your astronaut's name: ");
         astronautName = input.nextLine();
+
+//        astronautName = Controller.submitName();
 
         if(astronautName.isBlank()){
             astronautName = "Neil Armstrong";

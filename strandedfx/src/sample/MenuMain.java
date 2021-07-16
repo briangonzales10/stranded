@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.views.ViewManager;
+import javafx.concurrent.Task;
+import com.game.Main;
 
 public class MenuMain extends Application {
 
@@ -23,6 +25,9 @@ public class MenuMain extends Application {
        // menuStage.setScene(new Scene(root, 300, 275, Color.GREENYELLOW));
         menuStage.show();
     }
+
+
+
 
 
     public static void main(String[] args) {
