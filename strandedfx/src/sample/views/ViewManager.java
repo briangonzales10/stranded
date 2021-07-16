@@ -8,6 +8,7 @@ import java.util.Objects;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
@@ -99,10 +100,20 @@ public class ViewManager {
             public void handle(MouseEvent mouseEvent) {
 
                 Stage primaryStage = new Stage();
-
+                //Group root = new Group();
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../chooseAstronauts.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene chooseAstronauts = new Scene(root, Color.BLACK);
 
                 primaryStage.setTitle("Create Play test");
                 primaryStage.setResizable(false);
+                primaryStage.setScene(chooseAstronauts);
+                primaryStage.setWidth(WIDTH);
+                primaryStage.setHeight(HEIGHT);
                 primaryStage.show();
             }
         });

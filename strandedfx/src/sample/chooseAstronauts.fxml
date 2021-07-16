@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button layoutX="59.0" layoutY="291.0" mnemonicParsing="false" onAction="#switchToStartGame" text="Start Game" />
+      <ButtonBar layoutX="171.0" layoutY="283.0" prefHeight="40.0" prefWidth="269.0">
+        <buttons>
+            <RadioButton mnemonicParsing="false" text="Soldier" />
+            <RadioButton mnemonicParsing="false" text="Medic" />
+            <RadioButton mnemonicParsing="false" text="Explorer" />
+            <RadioButton mnemonicParsing="false" text="RadioButton" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>
