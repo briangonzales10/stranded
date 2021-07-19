@@ -1,8 +1,8 @@
 package sample;
 
+import com.game.startmenu.Status;
 import com.game.world.GameWorld;
 import com.game.world.Location;
-import com.sun.media.jfxmediaimpl.platform.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,8 +19,7 @@ import java.util.Objects;
 import javafx.event.ActionEvent;
 import com.game.Main;
 
-import javax.swing.*;
-
+import static com.game.startmenu.Status.fxDisplayPlayer;
 import static com.game.world.GameWorld.currentLocation;
 
 
@@ -45,6 +44,8 @@ public class Controller {
     }
 
 
+
+
     public void switchToStartGame(ActionEvent event) throws IOException, InterruptedException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playScreen.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -67,9 +68,14 @@ public class Controller {
         Main.gameToFX();
     }
 
-    public void setSendCommand(){
+
+
+    public void setSendCommand() throws IOException, InterruptedException {
         fxCurrentLocation.setText(currentLocation);
         System.out.println(planet1.get("description"));
+        HashMap<String, String> fxCurrLocation = Status.fxDisplayLocation();
+        fxDescription.setText(fxCurrLocation.get("Description"));
+        HashMap<String, Integer> fxPlayerHP = fxDisplayPlayer();
 
     }
 
