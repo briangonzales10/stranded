@@ -21,7 +21,7 @@
 		"id": 22,
 		"hpValue": 10,
 		"type": "food",
-		"itemName": "Creamcicle",
+		"itemName": "creamcicle",
 		"description": "Nice, space dessert. A little treat for you! ",
 		"keyItem": false,
 		"location": "Abandoned Storage Facility"
