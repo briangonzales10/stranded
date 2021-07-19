@@ -56,8 +56,6 @@ public class Controller {
         //Label topCurrentLocation = new Label();
         //topCurrentLocation.setText(currentLocation);
         //System.out.println(topCurrentLocation);
-
-        fxCurrentLocation.setText(currentLocation);
         stage.show();
         //fxCurrentLocation.setText(currentLocation);
         //System.out.println(fxCurrentLocation.toString());
