@@ -39,6 +39,7 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
 
+
     }
 
     public void startGameToFX() throws IOException, InterruptedException {

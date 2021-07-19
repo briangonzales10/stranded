@@ -60,4 +60,8 @@ public class StrandedSubScene extends SubScene {
         }
 
     }
+
+    public AnchorPane getAnchorPane(){
+        return (AnchorPane) this.getRoot();
+    }
 }
