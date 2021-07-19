@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -20,8 +21,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import sample.models.InfoLabel;
 import sample.models.StrandedButton;
 import sample.models.StrandedSubScene;
 
@@ -31,10 +34,15 @@ public class ViewManager {
     private static final int WIDTH = 1050;
     private static final int MENU_BUTTONS_START_X = 100;
     private static final int MENU_BUTTONS_START_Y = 225;
+    private StrandedSubScene sceneThatNeedsToSlide;
 
     private ArrayList<StrandedButton> buttonList;
 
     private StrandedSubScene creditSubscene;
+    private StrandedSubScene helpSubscene;
+    private StrandedSubScene scoreSubscene;
+    private StrandedSubScene playSubscene;
+
 
     private AnchorPane mainPane;
     private Scene mainScene;
@@ -74,6 +82,16 @@ public class ViewManager {
     private void createSubscenes(){
         creditSubscene = new StrandedSubScene();
         mainPane.getChildren().add(creditSubscene);
+
+        helpSubscene = new StrandedSubScene();
+        mainPane.getChildren().add(helpSubscene);
+
+        playSubscene = new StrandedSubScene();
+        mainPane.getChildren().add(playSubscene);
+
+        scoreSubscene = new StrandedSubScene();
+        mainPane.getChildren().add(scoreSubscene);
+
     }
 
 
@@ -104,10 +122,31 @@ public class ViewManager {
     }
 
     private void createPlayButton(){
-        StrandedButton scoreButton = new StrandedButton("PLAY");
-        addMenuButton(scoreButton);
+        StrandedButton playButton = new StrandedButton("PLAY");
+        StrandedButton newGameButton = new StrandedButton("NEW GAME");
+        StrandedButton continueGame = new StrandedButton("CONTINUE GAME");
 
-        scoreButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        newGameButton.setLayoutX(200);
+        newGameButton.setLayoutY(150);
+
+        continueGame.setLayoutX(200);
+        continueGame.setLayoutY(225);
+        continueGame.setButtonFontForLongText();
+
+
+
+        playSubscene.getAnchorPane().getChildren().add(newGameButton);
+        playSubscene.getAnchorPane().getChildren().add(continueGame);
+        addMenuButton(playButton);
+
+        playButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                showAndHideSubscenes(playSubscene);
+            }
+        });
+
+        newGameButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
 
@@ -130,28 +169,75 @@ public class ViewManager {
                 primaryStage.show();
             }
         });
+
+
     }
 
     private void createScoreButton(){
         StrandedButton scoreButton = new StrandedButton("SCORE");
         addMenuButton(scoreButton);
+        InfoLabel scoreLabel = new InfoLabel("Game Help");
+        InfoLabel score = new InfoLabel("1. Name: Jerad: Health-80\n2. Name: Jerad: Health-79\n3.0 Name: Jerad: Health-78\n4.0 Name: Jerad: Health-30\n");
+        scoreLabel.setUnderline(true);
+        scoreLabel.setLayoutY(-160);
+        scoreLabel.setTextForTitle();
+
+
+
+        scoreSubscene.getAnchorPane().getChildren().add(scoreLabel);
+        scoreSubscene.getAnchorPane().getChildren().add(score);
+
+
+        scoreButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                showAndHideSubscenes(scoreSubscene);
+            }
+        });
     }
 
     private void createHelpButton(){
 
         StrandedButton helpButton = new StrandedButton("HELP");
+        InfoLabel helpLabel = new InfoLabel("Game Help");
+        InfoLabel help = new InfoLabel("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+        helpLabel.setUnderline(true);
+        helpLabel.setLayoutY(-160);
+        helpLabel.setTextForTitle();
+
+        helpSubscene.getAnchorPane().getChildren().add(helpLabel);
+        helpSubscene.getAnchorPane().getChildren().add(help);
         addMenuButton(helpButton);
+
+        helpButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                showAndHideSubscenes(helpSubscene);
+            }
+        });
     }
 
     private void createCreditsButton(){
 
         StrandedButton credButton = new StrandedButton("CREDITS");
+        InfoLabel creditLabel = new InfoLabel("Game Credits");
+        InfoLabel names = new InfoLabel(" \n\nDamian Mercado\n\nDan Lasche\n\nJerad Alexander");
+        creditLabel.setUnderline(true);
+        creditLabel.setLayoutY(-160);
+        creditLabel.setTextForTitle();
+
+
+//        creditLabel.setLayoutX();
+        creditSubscene.getAnchorPane().getChildren().add(creditLabel);
+        creditSubscene.getAnchorPane().getChildren().add(names);
+
         addMenuButton(credButton);
+
 
         credButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                creditSubscene.moveSubScene();
+                showAndHideSubscenes(creditSubscene);
             }
         });
     }
@@ -159,6 +245,15 @@ public class ViewManager {
     private void createExitButton(){
         StrandedButton exitButton = new StrandedButton("EXIT");
         addMenuButton(exitButton);
+
+        exitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.out.println("Game closed by pressing exit");
+                Platform.exit();
+                System.exit(0);
+            }
+        });
     }
 
     private void createBackGround(){
@@ -193,5 +288,15 @@ public class ViewManager {
         });
 
         mainPane.getChildren().add(logo);
+    }
+
+    private void showAndHideSubscenes(StrandedSubScene subScene){
+        if(sceneThatNeedsToSlide != null){
+            sceneThatNeedsToSlide.moveSubScene();
+        }
+
+        subScene.moveSubScene();
+
+        sceneThatNeedsToSlide = subScene;
     }
 }

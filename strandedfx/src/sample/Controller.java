@@ -60,6 +60,7 @@ public class Controller {
         //fxCurrentLocation.setText(currentLocation);
         //System.out.println(fxCurrentLocation.toString());
 
+
     }
 
     public void startGameToFX() throws IOException, InterruptedException {
