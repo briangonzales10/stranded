@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
@@ -16,11 +18,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -114,10 +112,21 @@ public class ViewManager {
             public void handle(MouseEvent mouseEvent) {
 
                 Stage primaryStage = new Stage();
+                //Group root = new Group();
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../chooseAstronauts.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene chooseAstronauts = new Scene(root, Color.BLACK);
 
-
-                primaryStage.setTitle("Create Play test");
+                primaryStage.setTitle("Choose your Astronaut");
                 primaryStage.setResizable(false);
+                primaryStage.setScene(chooseAstronauts);
+                primaryStage.setWidth(WIDTH);
+                primaryStage.setHeight(HEIGHT);
+
                 primaryStage.show();
             }
         });
