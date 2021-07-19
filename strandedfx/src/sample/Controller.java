@@ -8,9 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,12 +28,18 @@ public class Controller {
     private Parent root;
     public TextField playerName;
     public Label displayAstroName;
+    public ToggleGroup astroGroup;
     @FXML
     public Label fxCurrentLocation;
     @FXML
     public Label fxDescription;
     @FXML
     Button sendCommand;
+    @FXML
+    public Label hp;
+    @FXML
+    public Label maxHP;
+
 
     GameWorld ourGame = new GameWorld();
     HashMap<String, Location> planet1 = ourGame.getPlanet1();
@@ -91,11 +95,19 @@ public class Controller {
     public String submitName(ActionEvent event){
         String name = playerName.getText();
         System.out.println("Player name is " + name);
+
+        RadioButton radioButton = (RadioButton) astroGroup.getSelectedToggle();
+        String astroGroup = radioButton.getText();
+        System.out.println(astroGroup);
+
+
 //        displayAstroName.setText(name);
     return name;
     }
 
     //Method that creates a new stage/scene that displays the travel ascii
 
+    public void checkRadioButtons(){
 
+    }
 }
