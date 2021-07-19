@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import com.game.Main;
 import javafx.application.Application;
+import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 import sample.views.ViewManager;
 import javafx.scene.media.Media;
@@ -22,7 +23,7 @@ public class MenuMain extends Application {
         menuStage.setTitle("Stranded");
        // menuStage.setScene(new Scene(root, 300, 275, Color.GREENYELLOW));
         menuStage.show();
-
+//        Slider slider1 = new Slider(0, 100, 0)
 //        Media media = new Media("menu_song.mp3");
 
 //        File file = new File("menu_song.mp3");
@@ -33,9 +34,9 @@ public class MenuMain extends Application {
 //        mediaPlayer.setAutoPlay(true);
 
     }
-    MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer;
     public void music() {
-        String s = "src/sample/models/resources/menu_song.mp3";
+        String s = "src/music/intro.wav";
         String path = Paths.get(s).toUri().toString();
         System.out.println(path);
         Media h = new Media(path);
