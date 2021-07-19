@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.media.Media;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -15,6 +20,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,9 +30,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import sample.MenuMain;
 import sample.models.InfoLabel;
 import sample.models.StrandedButton;
 import sample.models.StrandedSubScene;
+
 
 public class ViewManager {
 
@@ -42,6 +50,8 @@ public class ViewManager {
     private StrandedSubScene helpSubscene;
     private StrandedSubScene scoreSubscene;
     private StrandedSubScene playSubscene;
+
+
 
 
     private AnchorPane mainPane;
@@ -70,6 +80,8 @@ public class ViewManager {
 
         createLogo();
 
+        createSlider();
+
         StrandedSubScene subscene = new StrandedSubScene();
         mainPane.getChildren().add(subscene);
     }
@@ -92,6 +104,20 @@ public class ViewManager {
         scoreSubscene = new StrandedSubScene();
         mainPane.getChildren().add(scoreSubscene);
 
+    }
+
+    private void createSlider(){
+        Slider volumeControl = new Slider(0, 100, 5);
+
+        mainPane.getChildren().add(volumeControl);
+        volumeControl.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number t1) {
+                MenuMain.mediaPlayer.setVolume(volumeControl.getValue() * 0.01);
+
+                System.out.println("volume" + volumeControl.getValue());
+            }
+        });
     }
 
 
