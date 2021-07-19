@@ -35,7 +35,7 @@ public class MenuMain extends Application {
     }
     MediaPlayer mediaPlayer;
     public void music() {
-        String s = "src/sample/menu_song.mp3";
+        String s = "src/sample/models/resources/menu_song.mp3";
         String path = Paths.get(s).toUri().toString();
         System.out.println(path);
         Media h = new Media(path);
