@@ -35,6 +35,15 @@ public class StrandedButton extends Button {
         }
     }
 
+    public void setButtonFontForLongText(){
+        try {
+            setFont(Font.loadFont(new FileInputStream(FONT_PATH),16));
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+            setFont(Font.font("Verdana",23));
+        }
+    }
+
     private void setbuttonPressedStyle(){
         setStyle(BUTTON_PRESSED_STYLE);
         setPrefHeight(45);
