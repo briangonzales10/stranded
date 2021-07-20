@@ -193,6 +193,7 @@ public class ViewManager {
                 primaryStage.setHeight(HEIGHT);
 
                 primaryStage.show();
+                MenuMain.mediaPlayer.stop();
             }
         });
 
