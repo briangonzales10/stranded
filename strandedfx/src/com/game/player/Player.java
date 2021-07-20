@@ -137,7 +137,7 @@ public class Player {
     }
 
     //Getters & Setters
-    public static String getName(){
+    public String getName(){
         return name;
     }
 
@@ -164,6 +164,7 @@ public class Player {
         }
 
     }
+
 
     public static int getMaxHp() {
         return MAX_HP;
